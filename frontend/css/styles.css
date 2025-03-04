@@ -1,363 +1,474 @@
-/* ---------------------------------------
+/* ==========================================================================
    CSS Variables & Global Settings
------------------------------------------- */
-:root {
-  /* Color Palette */
-  --primary-color: #005792;       /* Trust & Reliability (blue) */
-  --secondary-color: #6BA292;     /* Nature/Eco-friendly (green) */
-  --accent-color: #FF8C00;        /* Energetic CTA accent */
-  --background-color: #f9f9f9;    /* Light, neutral background */
-  --text-color: #333;
-  --white: #fff;
-  --light-grey: #f2f2f2;
-
-  /* Typography */
-  --font-base: 'Open Sans', sans-serif;
-  --font-heading: 'Montserrat', sans-serif;
-  --font-size-base: 16px;
-  --line-height-base: 1.6;
-}
-/* Service Card Focus States */
-.service-card:focus-within {
-  outline: 2px solid var(--accent-color);
-}
-
-/* Form Error States (matches your JS) */
-.error-message {
-  color: #dc3545;
-  font-size: 0.875em;
-  display: block;
-  margin-top: 0.25rem;
-}
-
-input.error {
-  border-color: #dc3545;
-}
-
-/* Global Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: var(--font-base);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-base);
-  color: var(--text-color);
-  background-color: var(--background-color);
-  overflow-x: hidden;
-}
-
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ---------------------------------------
-   Layout Containers
------------------------------------------- */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-/* ---------------------------------------
-   Header
------------------------------------------- */
-.site-header {
-  background: var(--primary-color);
-  color: var(--white);
-  padding: 20px 0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  transition: background 0.3s ease;
-}
-.site-header:hover {
-  background: #004072; /* Darken on hover */
-}
-.site-header .logo a {
-  font-family: var(--font-heading);
-  font-size: 1.8em;
-  font-weight: bold;
-  color: var(--white);
-  text-decoration: none;
-}
-.main-nav ul {
-  display: flex;
-  list-style: none;
-  align-items: center;
-  justify-content: flex-end;
-}
-.main-nav ul li {
-  margin-left: 25px;
-}
-.main-nav ul li a {
-  color: var(--white);
-  text-decoration: none;
-  font-size: 1em;
-  transition: color 0.3s ease;
-}
-.main-nav ul li a:hover,
-.main-nav ul li a.active {
-  color: var(--accent-color);
-}
-.main-nav ul li a.cta {
-  background: var(--secondary-color);
-  padding: 10px 18px;
-  border-radius: 5px;
-  font-weight: 600;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-.main-nav ul li a.cta:hover {
-  background: var(--accent-color);
-  transform: scale(1.03);
-}
-
-/* ---------------------------------------
-   Hero Section
------------------------------------------- */
-.hero {
-  position: relative;
-  height: 70vh;
-  background: linear-gradient(135deg, rgba(0,87,146,0.75), rgba(107,162,146,0.75)), url('../images/hero-bg.jpg') no-repeat center center/cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.hero-overlay {
-  max-width: 800px;
-  padding: 0 20px;
-  animation: fadeInUp 1s ease-out forwards;
-  opacity: 0;
-}
-@keyframes fadeInUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-.hero-overlay h1 {
-  font-family: var(--font-heading);
-  font-size: 3.5em;
-  margin-bottom: 0.5em;
-  font-weight: bold;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-}
-.hero-overlay p {
-  font-size: 1.3em;
-  margin-bottom: 1em;
-  text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
-}
-.cta-button {
-  display: inline-block;
-  background: var(--secondary-color);
-  color: var(--white);
-  padding: 14px 30px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 1.1em;
-  font-weight: 600;
-  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-}
-.cta-button:hover {
-  background: var(--accent-color);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-}
-
-/* ---------------------------------------
-   Intro Section
------------------------------------------- */
-.intro {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-  padding: 60px 0;
-  align-items: center;
-}
-.intro-text h2 {
-  font-family: var(--font-heading);
-  font-size: 3em;
-  color: var(--primary-color);
-  margin-bottom: 20px;
-}
-.intro-text p {
-  font-size: 1.1em;
-  line-height: 1.8;
-  color: var(--text-color);
-}
-.intro-image img {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
-}
-.intro-image img:hover {
-  transform: scale(1.03);
-}
-
-/* ---------------------------------------
-   Services Overview
------------------------------------------- */
-.services-overview {
-  padding: 60px 0;
-  text-align: center;
-  background: var(--white);
-}
-.services-overview h2 {
-  font-family: var(--font-heading);
-  font-size: 3em;
-  color: var(--primary-color);
-  margin-bottom: 30px;
-}
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  padding: 0 20px;
-}
-.service-card {
-  background: var(--light-grey);
-  padding: 30px;
-  border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
-}
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-}
-.service-card img {
-  width: 60px;
-  margin-bottom: 15px;
-}
-.service-card h3 {
-  font-family: var(--font-heading);
-  font-size: 1.8em;
-  color: var(--primary-color);
-  margin-bottom: 10px;
-}
-.service-card p {
-  font-size: 1em;
-  margin-bottom: 15px;
-  color: var(--text-color);
-}
-.service-card a {
-  color: var(--secondary-color);
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-.service-card a:hover {
-  color: var(--accent-color);
-}
-
-/* ---------------------------------------
-   Testimonials
------------------------------------------- */
-.testimonials {
-  background: var(--white);
-  padding: 60px 0;
-  text-align: center;
-}
-.testimonials h2 {
-  font-family: var(--font-heading);
-  font-size: 3em;
-  color: var(--primary-color);
-  margin-bottom: 40px;
-}
-.testimonial-carousel {
-  display: flex;
-  overflow-x: auto;
-  gap: 30px;
-  padding: 0 20px;
-  scroll-snap-type: x mandatory;
-}
-.testimonial {
-  flex: 0 0 320px;
-  background: var(--light-grey);
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-  scroll-snap-align: center;
-}
-.testimonial:hover {
-  transform: scale(1.02);
-}
-.testimonial p {
-  font-size: 1em;
-  margin-bottom: 15px;
-  color: var(--text-color);
-}
-.customer-name {
-  font-weight: bold;
-  color: var(--secondary-color);
-}
-
-/* ---------------------------------------
-   CTA Banner
------------------------------------------- */
-.cta-banner {
-  background: var(--secondary-color);
-  color: var(--white);
-  padding: 50px 0;
-  text-align: center;
-  position: relative;
-}
-.cta-banner h2 {
-  font-family: var(--font-heading);
-  font-size: 2.6em;
-  margin-bottom: 20px;
-}
-.cta-banner .cta-button {
-  background: var(--accent-color);
-}
-
-/* ---------------------------------------
-   Footer
------------------------------------------- */
-.site-footer {
-  background: var(--primary-color);
-  color: var(--white);
-  padding: 25px 0;
-  text-align: center;
-  font-size: 0.9em;
-}
-.footer-links a {
-  color: var(--white);
-  margin: 0 15px;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-.footer-links a:hover {
-  color: var(--accent-color);
-}
-.footer-contact, .footer-social {
-  margin: 10px 0;
-}
-.footer-social a {
-  color: var(--white);
-  margin: 0 7px;
-}
-
-/* ---------------------------------------
-   Responsive Adjustments
------------------------------------------- */
-@media (max-width: 768px) {
+   ========================================================================== */
+   :root {
+    /* Colors */
+    --primary-color: #005792;        /* Strong blue for header & footer */
+    --secondary-color: #6BA292;      /* Green accents */
+    --accent-color: #FF8C00;         /* Energetic CTA */
+    --background-color: #f9f9f9;     /* Neutral background */
+    --text-color: #333;
+    --white: #fff;
+    --black: #000;
+    --light-text: #666;
+    --light-grey: #f2f2f2;
+  
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 3rem;
+  
+    /* Typography */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-base: 'Open Sans', sans-serif;
+    --font-size-base: 16px;
+    --line-height: 1.6;
+  
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+  
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+  }
+  
+  /* ==========================================================================
+     Global Reset & Base Styles
+     ========================================================================== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--font-base);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    overflow-x: hidden;
+  }
+  
+  /* Utility Container */
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  /* Skip Link for Accessibility */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--primary-color);
+    color: var(--white);
+    z-index: 1000;
+    transition: top var(--transition-fast);
+  }
+  .skip-link:focus {
+    top: var(--space-sm);
+  }
+  
+  /* ==========================================================================
+     Header & Navigation
+     ========================================================================== */
+  .site-header {
+    background: var(--primary-color);
+    color: var(--white);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: var(--space-sm) 0;
+    transition: background 0.3s ease;
+  }
+  .site-header:hover {
+    background: #004072;
+  }
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo img,
+  .site-header .logo a {
+    max-width: 180px;
+    height: auto;
+    font-family: var(--font-heading);
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .main-nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  .main-nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s ease;
+  }
+  .main-nav ul li a:hover,
+  .main-nav ul li a.active {
+    color: var(--accent-color);
+  }
+  /* CTA in Navigation */
+  .main-nav ul li a.cta {
+    background: var(--secondary-color);
+    padding: 10px 18px;
+    border-radius: 5px;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .main-nav ul li a.cta:hover {
+    background: var(--accent-color);
+    transform: scale(1.03);
+  }
+  
+  /* Mobile Navigation */
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-xs);
+  }
+  .hamburger {
+    width: 25px;
+    height: 2px;
+    background: var(--primary-color);
+    position: relative;
+    display: block;
+  }
+  .hamburger::before,
+  .hamburger::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    transition: transform var(--transition-fast);
+  }
+  .hamburger::before {
+    transform: translateY(-6px);
+  }
+  .hamburger::after {
+    transform: translateY(6px);
+  }
+  
+  /* ==========================================================================
+     Hero Section
+     ========================================================================== */
+  .hero {
+    position: relative;
+    height: 70vh;
+    background: linear-gradient(135deg, rgba(0, 87, 146, 0.75), rgba(107, 162, 146, 0.75)),
+                url('images/hero-bg.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+  }
+  .hero-overlay {
+    max-width: 800px;
+    padding: 0 20px;
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+  }
+  @keyframes fadeInUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  .hero-overlay h1 {
+    font-family: var(--font-heading);
+    font-size: 3.5em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  }
+  .hero-overlay p {
+    font-size: 1.3em;
+    margin-bottom: 1em;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+  }
+  /* CTA Button inside Hero */
+  .cta-button {
+    display: inline-block;
+    background: var(--secondary-color);
+    color: var(--white);
+    padding: 14px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  }
+  .cta-button:hover {
+    background: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* ==========================================================================
+     Intro Section
+     ========================================================================== */
   .intro {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    padding: 60px 0;
+    align-items: center;
+  }
+  .intro-text h2 {
+    font-family: var(--font-heading);
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+  }
+  .intro-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: var(--text-color);
+  }
+  .intro-visual img,
+  .intro-image img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease;
+  }
+  .intro-visual img:hover,
+  .intro-image img:hover {
+    transform: scale(1.03);
+  }
+  
+  /* ==========================================================================
+     Services Section
+     ========================================================================== */
+  .services-overview {
+    padding: 60px 0;
+    text-align: center;
+    background: var(--white);
+  }
+  .services-overview h2 {
+    font-family: var(--font-heading);
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-bottom: 30px;
   }
   .services-grid {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: var(--space-md) 0;
+  }
+  .service-card {
+    background: var(--light-grey);
+    padding: var(--space-md);
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+  }
+  .service-card img,
+  .service-icon img {
+    width: 60px;
+    margin-bottom: var(--space-sm);
+  }
+  .service-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+  }
+  .service-card p {
+    font-size: 1em;
+    margin-bottom: 15px;
+    color: var(--text-color);
+  }
+  .service-card a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  .service-card a:hover {
+    color: var(--accent-color);
+  }
+  /* Focus state for accessibility */
+  .service-card:focus-within {
+    outline: 2px solid var(--accent-color);
+  }
+  
+  /* ==========================================================================
+     Testimonials Section
+     ========================================================================== */
+  .testimonials {
+    background: var(--white);
+    padding: 60px 0;
+    text-align: center;
+  }
+  .testimonials h2 {
+    font-family: var(--font-heading);
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-bottom: 40px;
   }
   .testimonial-carousel {
-    flex-direction: column;
-    gap: 20px;
+    display: flex;
+    gap: 30px;
+    padding: 0 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
   }
-}
+  .testimonial {
+    flex: 0 0 320px;
+    background: var(--light-grey);
+    padding: var(--space-md);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    scroll-snap-align: center;
+  }
+  .testimonial:hover {
+    transform: scale(1.02);
+  }
+  .testimonial p {
+    font-size: 1em;
+    margin-bottom: 15px;
+    color: var(--text-color);
+  }
+  .customer-name {
+    font-weight: bold;
+    color: var(--secondary-color);
+  }
+  
+  /* ==========================================================================
+     CTA Banner
+     ========================================================================== */
+  .cta-banner {
+    background: var(--secondary-color);
+    color: var(--white);
+    padding: 50px 0;
+    text-align: center;
+    position: relative;
+  }
+  .cta-banner h2 {
+    font-family: var(--font-heading);
+    font-size: 2.6em;
+    margin-bottom: 20px;
+  }
+  .cta-banner .cta-button {
+    background: var(--accent-color);
+  }
+  
+  /* ==========================================================================
+     Footer
+     ========================================================================== */
+  .site-footer {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 25px 0;
+    text-align: center;
+    font-size: 0.9em;
+  }
+  .footer-links a {
+    color: var(--white);
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .footer-links a:hover {
+    color: var(--accent-color);
+  }
+  .footer-contact,
+  .footer-social {
+    margin: 10px 0;
+  }
+  .footer-social a {
+    color: var(--white);
+    margin: 0 7px;
+  }
+  
+  /* ==========================================================================
+     Form & Error States
+     ========================================================================== */
+  .error-message {
+    color: #dc3545;
+    font-size: 0.875em;
+    display: block;
+    margin-top: 0.25rem;
+  }
+  input.error {
+    border-color: #dc3545;
+  }
+  
+  /* ==========================================================================
+     Responsive Adjustments
+     ========================================================================== */
+  @media (max-width: 768px) {
+    .mobile-menu-toggle {
+      display: block;
+    }
+    .main-nav ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      padding: var(--space-md);
+      box-shadow: var(--shadow-md);
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .main-nav ul.active {
+      display: flex;
+    }
+    .intro,
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+    .testimonial-carousel {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+  
+  /* ==========================================================================
+     Print Styles
+     ========================================================================== */
+  @media print {
+    .site-header,
+    .site-footer {
+      display: none;
+    }
+  }
+  

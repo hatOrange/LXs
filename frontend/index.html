@@ -1,145 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Eco-friendly pest control services in Adelaide with certified treatments and rapid response">
-  <title>Contact LX Pest Solutions | Adelaide Pest Control Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LX Pest Solutions: Professional, eco-friendly pest control services in Adelaide">
+  <meta name="keywords" content="pest control, Adelaide, eco-friendly, termite control, rodent management">
+  <meta name="author" content="LX Pest Solutions">
+  <title>LX Pest Solutions - Adelaide's Eco-Friendly Pest Control Experts</title>
   <link rel="stylesheet" href="css/styles.css">
-  
-  <!-- Performance Optimization -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-  
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
-  <header class="site-header">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
     <div class="container">
       <div class="header-inner">
-        <div class="logo">
-          <a href="index.html" aria-label="LX Pest Solutions - Home">
-            <img src="images/logo.svg" alt="LX Pest Solutions Logo" width="180" height="40">
-          </a>
-        </div>
-        
-        <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="main-navigation" aria-label="Toggle navigation menu">
-          <span class="sr-only">Menu</span>
-          <span class="hamburger"></span>
-        </button>
-        
+        <a href="index.html" class="logo" aria-label="LX Pest Solutions Home">
+          <img src="images/logo.svg" alt="LX Pest Solutions Logo" width="180" height="40" loading="lazy">
+        </a>
         <nav class="main-nav" aria-label="Main navigation">
+          <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="main-navigation" aria-label="Toggle navigation menu">
+            <span class="sr-only">Menu</span>
+            <span class="hamburger"></span>
+          </button>
           <ul id="main-navigation">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html" aria-current="page">Home</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li><a href="booking.html" class="cta">Book Now</a></li>
           </ul>
         </nav>
       </div>
     </div>
   </header>
-  
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-overlay">
-      <h1>Safe. Clean. Pest-Free.</h1>
-      <p>Your trusted pest control solution in Adelaide</p>
-      <a href="contact.html" class="cta-button">Book Now</a>
-    </div>
-  </section>
-  
-  <!-- Introduction Section -->
-  <section class="intro container">
-    <div class="intro-text">
-      <h2>Welcome to LX Pest Solutions</h2>
-      <p>We offer eco-friendly, certified, and rapid pest control services for homes and businesses in Adelaide.</p>
-    </div>
-    <div class="intro-image">
-      <img src="images/technician.jpg" alt="Pest control technician in action">
-    </div>
-  </section>
-  
-  <!-- Services Section -->
-  <section aria-labelledby="services-heading">
-    <h2 id="services-heading" class="sr-only">Our Services</h2>
-    <div class="services-grid">
-      <article class="service-card" aria-labelledby="termite-control">
-        <img src="images/termite-icon.png" alt="Termite Control">
-        <h3 id="termite-control">Termite Control</h3>
-        <p>Protect your home from structural damage.</p>
-        <a href="services.html#termite">Learn More</a>
-      </article>
-      <article class="service-card" aria-labelledby="rodent-control">
-        <img src="images/rodent-icon.png" alt="Rodent Extermination">
-        <h3 id="rodent-control">Rodent Extermination</h3>
-        <p>Effective solutions to keep rodents away.</p>
-        <a href="services.html#rodent">Learn More</a>
-      </article>
-      <article class="service-card" aria-labelledby="insect-control">
-        <img src="images/insect-icon.png" alt="Insect Management">
-        <h3 id="insect-control">Insect Management</h3>
-        <p>Control ants, cockroaches, and more.</p>
-        <a href="services.html#insect">Learn More</a>
-      </article>
-      <article class="service-card" aria-labelledby="eco-friendly">
-        <img src="images/eco-icon.png" alt="Eco-Friendly Solutions">
-        <h3 id="eco-friendly">Eco-Friendly Solutions</h3>
-        <p>Safe treatments for families and pets.</p>
-        <a href="services.html#eco">Learn More</a>
-      </article>
-    </div>
-  </section>
-  
-  <!-- Testimonials Section -->
-  <section aria-labelledby="testimonials-heading" class="testimonials container">
-    <h2 id="testimonials-heading" class="sr-only">Customer Testimonials</h2>
-    <div class="testimonial-carousel">
-      <blockquote class="testimonial">
-        <p>"LX Pest Solutions gave us peace of mind with their professional service and eco-friendly approach."</p>
-        <cite>– John D.</cite>
-      </blockquote>
-      <blockquote class="testimonial">
-        <p>"Efficient, reliable, and friendly service. Highly recommended!"</p>
-        <cite>– Sarah M.</cite>
-      </blockquote>
-    </div>
-  </section>
-  
-  <!-- Call-to-Action Banner -->
-  <section class="cta-banner">
-    <div class="container">
-      <h2>Schedule a Free Inspection Today!</h2>
-      <a href="contact.html" class="cta-button">Book Now</a>
-    </div>
-  </section>
-  
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="about.html">About Us</a>
-        <a href="contact.html">Contact</a>
+
+  <main id="main-content">
+    <section class="hero" style="background-image: url('images/hero-bg.jpg');">
+      <div class="hero-overlay">
+        <h1>Safe. Clean. Pest-Free.</h1>
+        <p>Your trusted pest control solution in Adelaide</p>
+        <a href="contact.html" class="cta-button">Book Now</a>
       </div>
-      <div class="footer-contact">
-        <p>Adelaide, South Australia | Phone: 8371 1277</p>
-        <p>Email: info@lxpestsolutions.com.au</p>
+    </section>
+
+    <section class="intro container">
+      <div class="intro-text">
+        <h2>Comprehensive Pest Management</h2>
+        <p>Delivering eco-friendly, certified pest control services tailored to protect your home and business.</p>
       </div>
-      <div class="footer-social">
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">LinkedIn</a>
+      <div class="intro-visual">
+        <picture>
+          <source srcset="images/technician.webp" type="image/webp">
+          <img src="images/technician.jpg" alt="Professional pest control technician" loading="lazy">
+        </picture>
+      </div>
+    </section>
+
+    <section aria-labelledby="services-heading" class="services-overview">
+      <div class="container">
+        <h2 id="services-heading">Our Specialized Services</h2>
+        <div class="services-grid">
+          <article class="service-card" aria-labelledby="termite-control">
+            <div class="service-icon">
+              <img src="images/termite-icon.svg" alt="" aria-hidden="true" loading="lazy">
+            </div>
+            <h3 id="termite-control">Termite Protection</h3>
+            <p>Advanced treatments to safeguard your property's structural integrity.</p>
+            <a href="services.html#termite" class="service-link">Learn More</a>
+          </article>
+          <!-- Add more service cards as needed -->
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="testimonials-heading" class="testimonials">
+      <div class="container">
+        <h2 id="testimonials-heading">What Our Clients Say</h2>
+        <div class="testimonial-carousel">
+          <blockquote class="testimonial">
+            <img src="images/client1.jpg" alt="John D." loading="lazy">
+            <p>"Outstanding service and professionalism. Highly recommended!"</p>
+            <cite>- John D.</cite>
+          </blockquote>
+          <!-- Add more testimonials as needed -->
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <div class="container">
+        <h2>Ready to Protect Your Space?</h2>
+        <a href="contact.html" class="cta-button">Schedule Inspection</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-sections">
+        <div class="footer-brand">
+          <img src="images/logo-white.svg" alt="LX Pest Solutions" loading="lazy">
+        </div>
+        <nav aria-label="Footer Navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="contact-info">
+          <p>Adelaide, South Australia</p>
+          <a href="tel:+61883711277">8371 1277</a>
+          <a href="mailto:info@lxpestsolutions.com.au">info@lxpestsolutions.com.au</a>
+        </div>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">Facebook</a>
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        </div>
       </div>
       <p class="copyright">&copy; 2025 LX Pest Solutions. All rights reserved.</p>
     </div>
   </footer>
-  
-  <!-- External JS File -->
-  <script src="js/scripts.js"></script>
+
+  <script src="js/scripts.js" type="module"></script>
 </body>
 </html>

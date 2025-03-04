@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Contact LX Pest Solutions for eco-friendly pest control services in Adelaide. Get a free quote today!">
-  <title>Contact LX Pest Solutions | Adelaide Pest Control Services</title>
+  <meta name="description" content="Explore eco-friendly pest control services by LX Pest Solutions in Adelaide.">
+  <title>Services | LX Pest Solutions</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
       <div class="header-inner">
         <div class="logo">
           <a href="index.html" aria-label="LX Pest Solutions - Home">
-            <img src="images/logo.svg" alt="LX Pest Solutions Logo" width="180" height="40">
+            <img src="images/logo.svg" alt="LX Pest Solutions Logo" width="180" height="40" loading="lazy">
           </a>
         </div>
         <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="main-navigation" aria-label="Toggle navigation menu">
@@ -27,17 +27,17 @@
         <nav class="main-nav" aria-label="Main navigation">
           <ul id="main-navigation">
             <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
+            <li><a href="services.html" class="active" aria-current="page">Services</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li><a href="booking.html" class="cta">Book Now</a></li>
           </ul>
         </nav>
       </div>
     </div>
   </header>
-  
-  <section class="hero secondary-hero">
+
+  <section class="hero secondary-hero" style="background-image: url('images/services-hero.jpg');">
     <div class="hero-overlay">
       <h1>Our Services</h1>
       <p>Professional, modern, and eco-friendly pest control solutions</p>
@@ -48,34 +48,36 @@
     <aside class="services-sidebar">
       <h3>Service Categories</h3>
       <ul>
-        <li><a href="#residential">Residential</a></li>
-        <li><a href="#commercial">Commercial</a></li>
-        <li><a href="#specialized">Specialized Services</a></li>
+        <li><a href="#residential" class="smooth-scroll">Residential</a></li>
+        <li><a href="#commercial" class="smooth-scroll">Commercial</a></li>
+        <li><a href="#specialized" class="smooth-scroll">Specialized Services</a></li>
       </ul>
     </aside>
     <div class="services-content">
-      <section aria-labelledby="residential-services">
+      <section aria-labelledby="residential-services" id="residential">
         <h2 id="residential-services">Residential Pest Control</h2>
         <div class="service-cards">
           <article class="service-card" aria-label="Residential Pest Control Service">
+            <img src="images/residential.jpg" alt="Residential pest control" loading="lazy">
             <div class="card-content">
               <h3>Home Protection</h3>
               <p>Our residential services are tailored to protect your home from pests such as termites, rodents, and insects. We use eco-friendly treatments that are safe for your family and pets.</p>
             </div>
-            <a href="#book" class="cta">Book Now</a>
+            <a href="#book" class="cta-button">Book Now</a>
           </article>
           <article class="service-card" aria-label="Commercial Pest Management">
+            <img src="images/commercial.jpg" alt="Commercial pest control" loading="lazy">
             <div class="card-content">
               <h3>Commercial Solutions</h3>
               <p>We provide comprehensive pest management solutions for offices, restaurants, and retail spaces. Our discreet and efficient services ensure minimal disruption to your business operations.</p>
             </div>
-            <a href="#book" class="cta">Book Now</a>
+            <a href="#book" class="cta-button">Book Now</a>
           </article>
         </div>
       </section>
       <article id="specialized">
         <h2>Specialized Services</h2>
-        <img src="images/specialized.jpg" alt="Specialized pest control">
+        <img src="images/specialized.jpg" alt="Specialized pest control" loading="lazy">
         <p>Offering targeted treatments for specific pest challenges including termite protection and advanced rodent control systems using the latest integrated pest management strategies.</p>
         <a href="contact.html" class="cta-button">Book Now</a>
       </article>
@@ -92,7 +94,7 @@
       </div>
       <div class="footer-contact">
         <p>Adelaide, South Australia | Phone: 8371 1277</p>
-        <p>Email: info@lxpestsolutions.com.au</p>
+        <p>Email: <a href="mailto:info@lxpestsolutions.com.au">info@lxpestsolutions.com.au</a></p>
       </div>
       <div class="footer-social">
         <a href="#">Facebook</a>
