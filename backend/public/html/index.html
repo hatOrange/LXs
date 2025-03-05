@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <!-- Meta tags for character set, viewport, and SEO -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="LX Pest Solutions: Adelaide's premier eco-friendly pest control service. Fast, reliable solutions for homes and businesses with 100% satisfaction guarantee.">
+  <meta name="keywords" content="pest control, Adelaide, eco-friendly, termite control, rodent management, cockroach removal, ant treatment">
+  <meta name="author" content="LX Pest Solutions">
+  
+  <!-- Preload critical assets -->
+  <link rel="preload" href="css/styles.css" as="style">
+  <link rel="preload" href="fonts/montserrat-v15-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <!-- Open Graph tags for social sharing -->
+  <meta property="og:title" content="LX Pest Solutions - Adelaide's Eco-Friendly Pest Control Experts">
+  <meta property="og:description" content="Professional, eco-friendly pest control services in Adelaide with guaranteed results.">
+  <meta property="og:image" content="https://www.lxpestsolutions.com.au/images/og-image.jpg">
+  <meta property="og:url" content="https://www.lxpestsolutions.com.au">
+  <meta property="og:type" content="website">
+  
+  <title>LX Pest Solutions - Adelaide's Eco-Friendly Pest Control Experts</title>
+  
+  <!-- Favicon and related icons -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <!-- Font preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <!-- Structured data for Rich Snippets -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "LX Pest Solutions",
+      "image": "https://www.lxpestsolutions.com.au/images/logo.svg",
+      "url": "https://www.lxpestsolutions.com.au",
+      "telephone": "+61883711277",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "56 Deeds Road",
+        "addressLocality": "North Plympton",
+        "addressRegion": "SA",
+        "postalCode": "5037",
+        "addressCountry": "AU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -34.9483,
+        "longitude": 138.5747
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/lxpestsolutions",
+        "https://www.instagram.com/lxpestsolutions"
+      ]
+    }
+  </script>
+  
+  <!-- Critical inline CSS for above-the-fold content -->
+  <style>
+    /* Urgent notification banner with animation */
+    .urgency-banner {
+      background: #fff3e0;
+      color: #e65100;
+      padding: 10px 0;
+      text-align: center;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .urgency-banner::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: shine 2s infinite;
+    }
+    
+    @keyframes shine {
+      100% {
+        left: 100%;
+      }
+    }
+    
+    /* Activity notification with staggered appearance */
+    .live-activity {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 8px;
+      padding: 12px 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 999;
+      display: none;
+      align-items: center;
+      max-width: 300px;
+      animation: slideIn 0.5s ease-out;
+    }
+    
+    @keyframes slideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .live-activity img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+      object-fit: cover;
+    }
+    
+    .live-activity-text {
+      font-size: 0.9em;
+      line-height: 1.4;
+    }
+    
+    .live-activity-text span {
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+  </style>
+</head>
+<body>
+  <!-- Urgent notification banner for creating FOMO -->
+  <div class="urgency-banner" role="alert" aria-live="polite">
+    Summer pest alert: Book now to avoid 4-6 week waiting periods as temperatures rise!
+  </div>
+
+  <!-- Accessibility skip link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo" aria-label="LX Pest Solutions Home">
+          <img src="images/logo.svg" alt="LX Pest Solutions Logo" width="180" height="40" loading="lazy" decoding="async">
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="main-navigation" aria-label="Toggle navigation menu">
+            <span class="sr-only">Menu</span>
+            <span class="hamburger"></span>
+          </button>
+          <ul id="main-navigation">
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="booking.html" class="cta">Book Now</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main id="main-content">
+    <!-- Hero section with targeted messaging -->
+    <section class="hero" style="background-image: url('images/hero-bg.jpg');">
+      <div class="hero-overlay">
+        <h1>Safe. Clean. Pest-Free.</h1>
+        <p>Adelaide's most trusted pest control solutions since 2010</p>
+        <!-- Strong CTA with clear action -->
+        <a href="booking.html" class="cta-button">Get a Free Inspection Today</a>
+      </div>
+    </section>
+
+    <!-- Trust building statistics section -->
+    <div class="container">
+      <div class="stats-counter">
+        <h2>Our Impact</h2>
+        <div class="stats-grid">
+          <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="stat-number" data-count="98">98%</div>
+            <div class="stat-label">Customer Satisfaction Rate</div>
+          </div>
+          <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat-number" data-count="12500">12,500+</div>
+            <div class="stat-label">Properties Protected</div>
+          </div>
+          <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="stat-number" data-count="15">15+</div>
+            <div class="stat-label">Years of Experience</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Intro section with loss aversion messaging -->
+    <section class="intro container">
+      <div class="intro-text">
+        <h2>Comprehensive Pest Management</h2>
+        <!-- Loss aversion messaging to create urgency -->
+        <p>Every week you delay pest control, infestations can grow by up to 30%. Our eco-friendly, certified pest control services are tailored to protect your home and business before the situation worsens.</p>
+        <p><strong>Most pests are eliminated in just one visit, with our industry-leading 98% success rate.</strong></p>
+        <!-- Trust badges for credibility -->
+        <div class="certification-badges">
+          <img src="images/certified-badge-1.svg" alt="Licensed Pest Control Operator" width="80" height="80" loading="lazy" decoding="async">
+          <img src="images/certified-badge-2.svg" alt="Eco-Friendly Certified" width="80" height="80" loading="lazy" decoding="async">
+          <img src="images/certified-badge-3.svg" alt="Satisfaction Guaranteed" width="80" height="80" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <div class="intro-visual">
+        <!-- Modern image format with fallback -->
+        <picture>
+          <source srcset="images/technician.avif" type="image/avif">
+          <source srcset="images/technician.webp" type="image/webp">
+          <img src="images/technician.jpg" alt="Professional pest control technician in Adelaide" width="540" height="360" loading="lazy" decoding="async">
+        </picture>
+      </div>
+    </section>
+
+    <!-- Services overview with featured flag -->
+    <section aria-labelledby="services-heading" class="services-overview">
+      <div class="container">
+        <h2 id="services-heading">Our Specialized Services</h2>
+        <div class="services-grid">
+          <!-- Using the featured flag for popular service -->
+          <article class="service-card featured" aria-labelledby="termite-control">
+            <div class="service-icon">
+              <img src="images/termite-icon.svg" alt="" aria-hidden="true" width="60" height="60" loading="lazy" decoding="async">
+            </div>
+            <h3 id="termite-control">Termite Protection</h3>
+            <p>Advanced treatments to safeguard your property's structural integrity with our 5-year guarantee.</p>
+            <a href="services.html#termite" class="service-link">Learn More</a>
+          </article>
+          
+          <article class="service-card" aria-labelledby="cockroach-control">
+            <div class="service-icon">
+              <img src="images/cockroach-icon.svg" alt="" aria-hidden="true" width="60" height="60" loading="lazy" decoding="async">
+            </div>
+            <h3 id="cockroach-control">Cockroach Control</h3>
+            <p>Complete elimination of cockroaches with targeted treatments for immediate and long-lasting results.</p>
+            <a href="services.html#cockroach" class="service-link">Learn More</a>
+          </article>
+          
+          <article class="service-card" aria-labelledby="rodent-control">
+            <div class="service-icon">
+              <img src="images/rodent-icon.svg" alt="" aria-hidden="true" width="60" height="60" loading="lazy" decoding="async">
+            </div>
+            <h3 id="rodent-control">Rodent Control</h3>
+            <p>Effective mouse and rat solutions with our exclusive multi-point protection system.</p>
+            <a href="services.html#rodent" class="service-link">Learn More</a>
+          </article>
+          
+          <article class="service-card" aria-labelledby="ant-control">
+            <div class="service-icon">
+              <img src="images/ant-icon.svg" alt="" aria-hidden="true" width="60" height="60" loading="lazy" decoding="async">
+            </div>
+            <h3 id="ant-control">Ant Treatment</h3>
+            <p>Eliminate colonies at the source with our advanced barrier protection technology.</p>
+            <a href="services.html#ant" class="service-link">Learn More</a>
+          </article>
+          
+          <article class="service-card" aria-labelledby="spider-control">
+            <div class="service-icon">
+              <img src="images/spider-icon.svg" alt="" aria-hidden="true" width="60" height="60" loading="lazy" decoding="async">
+            </div>
+            <h3 id="spider-control">Spider Control</h3>
+            <p>Safe removal of dangerous and nuisance spiders from your home or business.</p>
+            <a href="services.html#spider" class="service-link">Learn More</a>
+          </article>
+          
+          <article class="service-card" aria-labelledby="commercial-control">
+            <div class="service-icon">
+              <img src="images/commercial-icon.svg" alt="" aria-hidden="true" width="60" height="60" loading="lazy" decoding="async">
+            </div>
+            <h3 id="commercial-control">Commercial Solutions</h3>
+            <p>Customized pest management programs for businesses, retail, and hospitality.</p>
+            <a href="services.html#commercial" class="service-link">Learn More</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guarantee section for risk reduction -->
+    <section class="guarantee-section">
+      <div class="container">
+        <h2>Our Triple Guarantee</h2>
+        <div class="guarantees">
+          <div class="guarantee-item" data-aos="fade-up" data-aos-delay="100">
+            <img src="images/satisfaction-icon.svg" alt="" aria-hidden="true" width="60" height="60" loading="lazy" decoding="async">
+            <h3>100% Satisfaction</h3>
+            <p>If you're not completely satisfied with our service, we'll return at no additional cost until the problem is solved.</p>
+          </div>
+          
+          <div class="guarantee-item" data-aos="fade-up" data-aos-delay="200">
+            <img src="images/eco-icon.svg" alt="" aria-hidden="true" width="60" height="60" loading="lazy" decoding="async">
+            <h3>Eco-Friendly Promise</h3>
+            <p>We use the most environmentally responsible methods available that are safe for your family, pets, and the planet.</p>
+          </div>
+          
+          <div class="guarantee-item" data-aos="fade-up" data-aos-delay="300">
+            <img src="images/price-icon.svg" alt="" aria-hidden="true" width="60" height="60" loading="lazy" decoding="async">
+            <h3>Price Match Guarantee</h3>
+            <p>We'll match any written quote from a licensed competitor for equivalent services.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials as social proof -->
+    <section aria-labelledby="testimonials-heading" class="testimonials">
+      <div class="container">
+        <h2 id="testimonials-heading">What Our Clients Say</h2>
+        <!-- Carousel with testimonials -->
+        <div class="testimonial-carousel">
+          <blockquote class="testimonial">
+            <img src="images/client1.jpg" alt="John D." width="70" height="70" loading="lazy" decoding="async">
+            <p>"LX Pest Solutions eliminated our termite problem when two other companies failed. Their attention to detail and thoroughness was impressive!"</p>
+            <cite>- John D., Norwood</cite>
+          </blockquote>
+          
+          <blockquote class="testimonial">
+            <img src="images/client2.jpg" alt="Rebecca T." width="70" height="70" loading="lazy" decoding="async">
+            <p>"As a restaurant owner, pest control is critical. Their discreet, after-hours service ensured zero disruption to our business."</p>
+            <cite>- Rebecca T., Adelaide CBD</cite>
+          </blockquote>
+          
+          <blockquote class="testimonial">
+            <img src="images/client3.jpg" alt="Michael S." width="70" height="70" loading="lazy" decoding="async">
+            <p>"The technician explained everything thoroughly and took the time to address all our concerns. Truly professional service!"</p>
+            <cite>- Michael S., Glenelg</cite>
+          </blockquote>
+        </div>
+        <!-- Testimonial navigation controls -->
+        <div class="carousel-controls">
+          <button id="prevTestimonial" aria-label="Previous testimonial" class="carousel-arrow prev-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+          </button>
+          <div class="carousel-dots"></div>
+          <button id="nextTestimonial" aria-label="Next testimonial" class="carousel-arrow next-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA with loss aversion messaging -->
+    <section class="cta-banner">
+      <div class="container">
+        <h2>Ready to Protect Your Space?</h2>
+        <p>Every day you wait, pests multiply and cause more damage.</p>
+        <a href="booking.html" class="cta-button">Schedule Free Inspection Now</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-white.svg" alt="LX Pest Solutions" width="180" height="40" loading="lazy" decoding="async">
+          <p>Adelaide's most trusted pest control solution since 2010.</p>
+        </div>
+        
+        <nav class="footer-nav" aria-label="Footer Navigation">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="booking.html">Book Now</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </nav>
+        
+        <div class="contact-info">
+          <h3>Contact Us</h3>
+          <address>
+            <p>56 Deeds Road, North Plympton, SA 5037</p>
+            <p>
+              <a href="tel:+61883711277">8371 1277</a><br>
+              <a href="mailto:info@lxpestsolutions.com.au">info@lxpestsolutions.com.au</a>
+            </p>
+          </address>
+        </div>
+        
+        <div class="social-links">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="https://facebook.com/lxpestsolutions" aria-label="Facebook" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="https://instagram.com/lxpestsolutions" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.17-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.17-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.17 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07m0-2.16c-3.26 0-3.67.01-4.95.07-1.28.06-2.15.26-2.91.56-.79.31-1.46.72-2.13 1.38-.66.67-1.07 1.34-1.38 2.13-.3.76-.5 1.63-.56 2.91-.06 1.28-.07 1.69-.07 4.95s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.63.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13-.67-.66-1.34-1.07-2.13-1.38-.76-.3-1.63-.5-2.91-.56-1.28-.06-1.69-.07-4.95-.07z" fill="currentColor"/>
+                <path d="M12 5.84c-3.4 0-6.16 2.76-6.16 6.16s2.76 6.16 6.16 6.16 6.16-2.76 6.16-6.16-2.76-6.16-6.16-6.16zm0 10.15c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" fill="currentColor"/>
+                <circle cx="18.41" cy="5.59" r="1.44" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="https://linkedin.com/company/lxpestsolutions" aria-label="LinkedIn" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" fill="currentColor"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="copyright">&copy; 2025 LX Pest Solutions. All rights reserved.</p>
+        <p class="footer-legal">
+          <a href="terms.html">Terms & Conditions</a> |
+          <a href="privacy.html">Privacy Policy</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Live activity notification (hidden by default) -->
+  <div class="live-activity" id="liveActivity" aria-live="polite" role="status">
+    <img src="images/user-avatar.jpg" alt="" aria-hidden="true" width="40" height="40">
+    <div class="live-activity-text">
+      <span>Sarah from Prospect</span> just booked a pest inspection
+    </div>
+    <button class="close-notification" aria-label="Close notification">&times;</button>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/scripts.js" type="module" defer></script>
+  
+  <!-- Social proof notifications -->
+  <script>
+    // Initialize variables outside functions for memory efficiency
+    let activityTimeout;
+    const liveActivity = document.getElementById('liveActivity');
+    const closeBtn = document.querySelector('.close-notification');
+    
+    // Preload activity data for better performance
+    const activityData = [
+      {name: 'John', location: 'Prospect', service: 'pest inspection'},
+      {name: 'Sarah', location: 'Norwood', service: 'termite treatment'},
+      {name: 'Michael', location: 'Glenelg', service: 'rodent control'},
+      {name: 'Emma', location: 'Semaphore', service: 'cockroach treatment'},
+      {name: 'David', location: 'North Adelaide', service: 'ant control'},
+      {name: 'Jessica', location: 'Burnside', service: 'spider removal'},
+      {name: 'Robert', location: 'Henley Beach', service: 'commercial pest control'},
+      {name: 'Lisa', location: 'Mitcham', service: 'pest inspection'}
+    ];
+      
+    // Optimize event attachment with load event
+    window.addEventListener('load', function() {
+      // Delayed initialization for better initial page load performance
+      setTimeout(initializeNotifications, 15000);
+      
+      // Close button functionality
+      if (closeBtn) {
+        closeBtn.addEventListener('click', hideNotification);
+      }
+    });
+    
+    function initializeNotifications() {
+      showNotification();
+      // Use requestAnimationFrame for smoother animations
+      requestAnimationFrame(() => {
+        if (liveActivity) liveActivity.style.display = 'flex';
+      });
+    }
+    
+    function showNotification() {
+      if (!liveActivity) return;
+      
+      // Get random activity for display
+      const activity = activityData[Math.floor(Math.random() * activityData.length)];
+      
+      // Update notification content efficiently
+      const textEl = liveActivity.querySelector('.live-activity-text');
+      if (textEl) {
+        textEl.innerHTML = `<span>${activity.name} from ${activity.location}</span> just booked a ${activity.service}`;
+      }
+      
+      // Show notification with optimized animation
+      liveActivity.style.display = 'flex';
+      liveActivity.style.opacity = '0';
+      
+      // Use requestAnimationFrame for smoother transitions
+      requestAnimationFrame(() => {
+        liveActivity.style.opacity = '1';
+      });
+      
+      // Schedule auto-hide and next notification
+      activityTimeout = setTimeout(() => {
+        hideNotification();
+        
+        // Schedule next notification with variable timing for natural feel
+        setTimeout(showNotification, 45000 + Math.random() * 30000);
+      }, 8000);
+    }
+    
+    function hideNotification() {
+      if (!liveActivity) return;
+      
+      // Clear any existing timeout to prevent memory leaks
+      if (activityTimeout) {
+        clearTimeout(activityTimeout);
+      }
+      
+      // Optimize hiding animation
+      liveActivity.style.opacity = '0';
+      setTimeout(() => {
+        liveActivity.style.display = 'none';
+      }, 300); // Match transition duration
+    }
+  </script>
+</body>
+</html>
