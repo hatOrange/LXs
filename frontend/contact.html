@@ -518,10 +518,17 @@
       
       <!-- Map container with lazy loading -->
       <div class="map-container">
-        <div id="mapLoading" class="map-loading">
-          <p>Loading map...</p>
-        </div>
-        <div id="map" aria-label="Office location map"></div>
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4477.986658910573!2d138.56524875645638!3d-34.95432877544226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ab0cf8d01e5cd8b%3A0x4b1fe08db0f1bff9!2sKmart%20Kurralta%20Park!5e0!3m2!1sen!2sau!4v1741200733504!5m2!1sen!2sau" 
+          width="100%" 
+          height="300" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          title="LX Pest Solutions office location"
+          aria-label="Map showing our office location">
+        </iframe>
       </div>
     </section>
   </main>
@@ -824,115 +831,6 @@
      * Google Maps integration with lazy loading
      * Only loads when user scrolls to the map section
      */
-    document.addEventListener('DOMContentLoaded', () => {
-      const mapContainer = document.querySelector('.map-container');
-      
-      if (!mapContainer) return;
-      
-      // Use Intersection Observer for performance-optimized lazy loading
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            loadGoogleMaps();
-            observer.disconnect();
-          }
-        });
-      }, { threshold: 0.1 });
-      
-      observer.observe(mapContainer);
-      
-      /**
-       * Load Google Maps API only when needed
-       */
-      function loadGoogleMaps() {
-        const mapScript = document.createElement('script');
-        mapScript.src = 'https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap';
-        mapScript.async = true;
-        mapScript.defer = true;
-        document.body.appendChild(mapScript);
-        
-        // Define global callback for when Google Maps loads
-        window.initMap = function() {
-          const mapElement = document.getElementById('map');
-          const mapLoading = document.getElementById('mapLoading');
-          
-          if (mapElement) {
-            // Create map with company location
-            const companyLocation = { 
-              lat: -34.9483, 
-              lng: 138.5747 // North Plympton coordinates
-            };
-            
-            // Customize map appearance
-            const mapOptions = {
-              zoom: 15,
-              center: companyLocation,
-              mapTypeControl: false,
-              streetViewControl: false,
-              fullscreenControl: false,
-              zoomControl: true,
-              styles: [
-                // Custom map styles for branded appearance
-                {
-                  "featureType": "water",
-                  "elementType": "geometry",
-                  "stylers": [{ "color": "#e9e9e9" }, { "lightness": 17 }]
-                },
-                {
-                  "featureType": "landscape",
-                  "elementType": "geometry",
-                  "stylers": [{ "color": "#f5f5f5" }, { "lightness": 20 }]
-                },
-                {
-                  "featureType": "road.highway",
-                  "elementType": "geometry.fill",
-                  "stylers": [{ "color": "#ffffff" }, { "lightness": 17 }]
-                }
-                // Additional map styling would go here
-              ]
-            };
-            
-            // Initialize map
-            const map = new google.maps.Map(mapElement, mapOptions);
-            
-            // Add company marker
-            const marker = new google.maps.Marker({
-              position: companyLocation,
-              map: map,
-              title: 'LX Pest Solutions',
-              animation: google.maps.Animation.DROP,
-              icon: {
-                url: 'images/map-marker.svg',
-                scaledSize: new google.maps.Size(40, 40)
-              }
-            });
-            
-            // Add info window
-            const infoContent = `
-              <div class="map-info-window">
-                <h3>LX Pest Solutions</h3>
-                <p>56 Deeds Road<br>North Plympton, SA 5037</p>
-                <a href="https://maps.google.com/maps?daddr=-34.9483,138.5747" target="_blank" rel="noopener">Get Directions</a>
-              </div>
-            `;
-            
-            const infoWindow = new google.maps.InfoWindow({
-              content: infoContent
-            });
-            
-            // Open info window when marker is clicked
-            marker.addListener('click', () => {
-              infoWindow.open(map, marker);
-            });
-            
-            // Hide loading overlay once map is loaded
-            if (mapLoading) {
-              mapLoading.style.display = 'none';
-            }
-          }
-        };
-      }
-    });
   </script>
 </body>
 </html>
