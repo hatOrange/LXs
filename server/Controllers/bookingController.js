@@ -20,18 +20,19 @@ export const getUserBookings = async (req, res) => {
     
     const bookings = await db.query(
       `SELECT 
-        booking_id, 
-        booking_type, 
-        property_size, 
-        booking_date, 
-        status, 
-        created_at,
-        location,
-        location_phone,
-        location_email
-      FROM bookings 
-      WHERE user_id = $1 
-      ORDER BY booking_date DESC`,
+        b.booking_id, 
+        b.booking_type, 
+        b.property_size, 
+        b.booking_date, 
+        b.status, 
+        b.created_at,
+        b.location,
+        b.location_phone,
+        b.location_email,
+        (SELECT count(*) > 0 FROM cancellation_requests cr WHERE cr.booking_id = b.booking_id AND cr.status = 'pending') as has_pending_cancellation
+      FROM bookings b
+      WHERE b.user_id = $1 
+      ORDER BY b.booking_date DESC`,
       [userId]
     );
 
@@ -245,16 +246,37 @@ export const requestCancellation = async (req, res) => {
     if (['completed', 'canceled'].includes(booking.status)) {
       return res.status(400).json({
         success: false,
-        msg: `Cannot cancel a booking with status: ${booking.status}`
+        msg: `Cannot request cancellation for a booking with status: ${booking.status}`
+      });
+    }
+    
+    // Check if booking is already approved (confirmed)
+    if (booking.status === 'confirmed') {
+      return res.status(400).json({
+        success: false,
+        msg: `Cannot request cancellation for a booking that has already been confirmed by admin`
       });
     }
 
-    // Update booking status to "cancellation_requested"
-    await db.query(
-      `UPDATE bookings 
-       SET status = 'cancellation_requested', updated_at = CURRENT_TIMESTAMP
-       WHERE booking_id = $1`,
+    // Check if there's already a pending cancellation request
+    const existingRequest = await db.query(
+      `SELECT id FROM cancellation_requests 
+       WHERE booking_id = $1 AND status = 'pending'`,
       [bookingId]
+    );
+
+    if (existingRequest.rows.length > 0) {
+      return res.status(400).json({
+        success: false,
+        msg: "A cancellation request for this booking is already pending"
+      });
+    }
+
+    // Create cancellation request
+    await db.query(
+      `INSERT INTO cancellation_requests (booking_id, reason)
+       VALUES ($1, $2)`,
+      [bookingId, reason || null]
     );
 
     // Send cancellation request email to admin
@@ -276,7 +298,7 @@ export const requestCancellation = async (req, res) => {
           <li><strong>Date:</strong> ${new Date(booking.booking_date).toLocaleString()}</li>
           <li><strong>Cancellation Reason:</strong> ${reason || 'No reason provided'}</li>
         </ul>
-        <p>Please contact the customer to process this cancellation request.</p>
+        <p>Please review this cancellation request in the admin dashboard.</p>
       `
     });
 

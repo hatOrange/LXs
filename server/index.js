@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import router from './Route/authRoutes.js';
 import bookingRouter from './Route/bookingRoutes.js';
 import adminRouter from './Route/adminRoutes.js';
+import adminBookingRouter from './Route/adminBookingRoutes.js';
 import { createInitialAdmin } from './Controllers/adminController.js';
 
 // Load environment variables
@@ -37,6 +38,9 @@ app.use('/api/bookings', bookingRouter);
 
 // Link admin routes
 app.use('/api/admin', adminRouter);
+
+// Link admin booking routes
+app.use('/api/admin/bookings', adminBookingRouter);
 
 // Create initial admin account during server startup
 app.listen(PORT, async () => {
