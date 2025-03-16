@@ -3,436 +3,80 @@
 <head>
   <!-- Meta tags for character set, viewport, and SEO -->
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="viewport" content="width=device-width, maximum-scale=5.0">
   <meta name="description" content="Learn about LX Pest Solutions, Adelaide's trusted eco-friendly pest control experts. Meet our certified team and discover our company values.">
   <meta name="keywords" content="pest control Adelaide, about LX Pest Solutions, eco-friendly pest management, certified pest technicians">
-  
+
   <!-- Open Graph tags for social sharing -->
   <meta property="og:title" content="About LX Pest Solutions | Adelaide Pest Control Experts">
   <meta property="og:description" content="Meet the team behind Adelaide's most trusted pest control service. Certified experts with a commitment to eco-friendly solutions.">
   <meta property="og:image" content="https://www.lxpestsolutions.com.au/images/og-about.jpg">
   <meta property="og:url" content="https://www.lxpestsolutions.com.au/about.html">
   <meta property="og:type" content="website">
-  
+
   <title>About LX Pest Solutions | Adelaide Pest Control Experts</title>
-  
-  <!-- Preload critical assets -->
-  <link rel="preload" href="../css/styles.css" as="styles">
-  <link rel="preload" href="fonts/montserrat-v15-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Preload & references to external CSS/JS -->
+  <link rel="preload" href="../css/styles.css" as="style">
+  <link rel="preload" href="../js/scripts.js" as="script">
   <link rel="preload" href="images/about-hero.jpg" as="image" type="image/jpeg">
   
   <!-- Favicon and related icons -->
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
-  
-  <!-- Stylesheets -->
+
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="../css/styles.css">
-  
-  <!-- Font preconnect for performance -->
+
+  <!-- Font preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  >
+
   <!-- About page structured data -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "AboutPage",
-      "mainEntity": {
-        "@type": "Organization",
-        "name": "LX Pest Solutions",
-        "legalName": "LX Pest Solutions Pty Ltd",
-        "foundingDate": "2010",
-        "founders": [
-          {
-            "@type": "Person",
-            "name": "Alex Brown"
-          }
-        ],
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "56 Deeds Road",
-          "addressLocality": "North Plympton",
-          "addressRegion": "SA",
-          "postalCode": "5037",
-          "addressCountry": "AU"
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "LX Pest Solutions",
+      "legalName": "LX Pest Solutions Pty Ltd",
+      "foundingDate": "2010",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Alex Brown"
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "56 Deeds Road",
+        "addressLocality": "North Plympton",
+        "addressRegion": "SA",
+        "postalCode": "5037",
+        "addressCountry": "AU"
+      },
+      "description": "Professional eco-friendly pest control services in Adelaide",
+      "employee": [
+        {
+          "@type": "Person",
+          "name": "Alex Brown",
+          "jobTitle": "Founder & CEO"
         },
-        "description": "Professional eco-friendly pest control services in Adelaide",
-        "employee": [
-          {
-            "@type": "Person",
-            "name": "Alex Brown",
-            "jobTitle": "Founder & CEO"
-          },
-          {
-            "@type": "Person",
-            "name": "Maria Lopez",
-            "jobTitle": "Operations Manager"
-          }
-        ]
-      }
+        {
+          "@type": "Person",
+          "name": "Maria Lopez",
+          "jobTitle": "Operations Manager"
+        }
+      ]
     }
+  }
   </script>
-  
-  <!-- Inline critical CSS for above-the-fold content -->
-  <style>
-    /* About page specific styles */
-    .about-hero {
-      background-position: center 25%;
-      position: relative;
-    }
-    
-    .about-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      padding: 60px 0;
-    }
-    
-    @media (max-width: 768px) {
-      .about-content {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    .company-story,
-    .company-values {
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .company-story:hover,
-    .company-values:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    }
-    
-    .company-story::before,
-    .company-values::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 5px;
-      height: 100%;
-    }
-    
-    .company-story::before {
-      background: var(--primary-color);
-    }
-    
-    .company-values::before {
-      background: var(--secondary-color);
-    }
-    
-    .company-story h2,
-    .company-values h2 {
-      color: var(--primary-color);
-      font-family: var(--font-heading);
-      margin-top: 0;
-      position: relative;
-      display: inline-block;
-    }
-    
-    .company-story h2::after,
-    .company-values h2::after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 50px;
-      height: 3px;
-      background: var(--accent-color);
-    }
-    
-    .company-values ul {
-      list-style: none;
-      padding: 0;
-    }
-    
-    .company-values li {
-      margin-bottom: 15px;
-      padding-left: 30px;
-      position: relative;
-    }
-    
-    .company-values li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: var(--secondary-color);
-      font-weight: bold;
-    }
-    
-    .certifications {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: center;
-      margin-top: 30px;
-    }
-    
-    .certification-badge {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-      transition: transform 0.3s ease;
-    }
-    
-    .certification-badge:hover {
-      transform: scale(1.1);
-    }
-    
-    /* Team section styles */
-    .team {
-      padding: 60px 0;
-      background: #f9f9f9;
-    }
-    
-    .team h2 {
-      text-align: center;
-      color: var(--primary-color);
-      font-family: var(--font-heading);
-      margin-bottom: 40px;
-      position: relative;
-    }
-    
-    .team h2::after {
-      content: "";
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: var(--accent-color);
-    }
-    
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-    
-    .team-member {
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .team-member:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    }
-    
-    .team-member img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      display: block;
-    }
-    
-    .team-member-content {
-      padding: 20px;
-    }
-    
-    .team-member h3 {
-      margin-top: 0;
-      color: var(--primary-color);
-      font-family: var(--font-heading);
-    }
-    
-    .team-member .position {
-      color: var(--secondary-color);
-      font-weight: 600;
-      margin-bottom: 15px;
-    }
-    
-    .team-member .bio {
-      color: var(--text-color);
-      margin-bottom: 20px;
-    }
-    
-    .team-member .credentials {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 15px;
-    }
-    
-    .team-member .credential-badge {
-      width: 30px;
-      height: 30px;
-      object-fit: contain;
-    }
-    
-    /* Timeline styles */
-    .company-timeline {
-      padding: 60px 0;
-    }
-    
-    .company-timeline h2 {
-      text-align: center;
-      color: var(--primary-color);
-      font-family: var(--font-heading);
-      margin-bottom: 50px;
-    }
-    
-    .timeline {
-      position: relative;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .timeline::after {
-      content: '';
-      position: absolute;
-      width: 6px;
-      background-color: var(--primary-color);
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      margin-left: -3px;
-    }
-    
-    .timeline-item {
-      padding: 10px 40px;
-      position: relative;
-      width: 50%;
-    }
-    
-    .timeline-item::after {
-      content: '';
-      position: absolute;
-      width: 25px;
-      height: 25px;
-      right: -12px;
-      background-color: white;
-      border: 4px solid var(--accent-color);
-      top: 15px;
-      border-radius: 50%;
-      z-index: 1;
-    }
-    
-    .left {
-      left: 0;
-    }
-    
-    .right {
-      left: 50%;
-    }
-    
-    .right::after {
-      left: -12px;
-    }
-    
-    .timeline-content {
-      padding: 20px 30px;
-      background-color: white;
-      position: relative;
-      border-radius: 6px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    .timeline-content h3 {
-      color: var(--primary-color);
-      margin-top: 0;
-      font-family: var(--font-heading);
-    }
-    
-    .timeline-year {
-      display: inline-block;
-      padding: 5px 15px;
-      background: var(--secondary-color);
-      color: white;
-      font-weight: bold;
-      border-radius: 20px;
-      margin-bottom: 10px;
-    }
-    
-    @media screen and (max-width: 768px) {
-      .timeline::after {
-        left: 31px;
-      }
-      
-      .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-      }
-      
-      .timeline-item::after {
-        left: 18px;
-      }
-      
-      .right {
-        left: 0;
-      }
-    }
-    
-    /* Mission & vision section */
-    .mission-vision {
-      background: var(--primary-color);
-      color: white;
-      padding: 60px 0;
-      text-align: center;
-    }
-    
-    .mission-vision h2 {
-      color: white;
-      font-family: var(--font-heading);
-      margin-bottom: 40px;
-    }
-    
-    .mission-vision-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-    
-    .mission-box,
-    .vision-box {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 30px;
-      border-radius: 8px;
-      transition: transform 0.3s ease;
-    }
-    
-    .mission-box:hover,
-    .vision-box:hover {
-      transform: translateY(-5px);
-    }
-    
-    .mission-box h3,
-    .vision-box h3 {
-      font-family: var(--font-heading);
-      margin-top: 0;
-      position: relative;
-      display: inline-block;
-      padding-bottom: 10px;
-    }
-    
-    .mission-box h3::after,
-    .vision-box h3::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50px;
-      height: 3px;
-      background: var(--accent-color);
-    }
-  </style>
 </head>
 <body>
   <!-- Accessibility skip link -->
@@ -447,7 +91,13 @@
             <img src="images/logo.svg" alt="LX Pest Solutions Logo" width="180" height="40" loading="lazy" decoding="async">
           </a>
         </div>
-        <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="main-navigation" aria-label="Toggle navigation menu">
+        <button
+          id="mobileMenuToggle"
+          class="mobile-menu-toggle"
+          aria-expanded="false"
+          aria-controls="main-navigation"
+          aria-label="Toggle navigation menu"
+        >
           <span class="sr-only">Menu</span>
           <span class="hamburger"></span>
         </button>
@@ -465,7 +115,11 @@
   </header>
 
   <!-- Hero section -->
-  <section class="hero secondary-hero about-hero" style="background-image: url('images/about-hero.jpg');" aria-label="About Us Hero Image">
+  <section
+    class="hero secondary-hero about-hero"
+    style="background-image: url('images/about-hero.jpg');"
+    aria-label="About Us Hero Image"
+  >
     <div class="hero-overlay">
       <h1>About Us</h1>
       <p>Our story, mission, and values</p>
@@ -474,13 +128,13 @@
 
   <!-- Main content -->
   <main id="main-content">
-    <!-- Company story and values section -->
+    <!-- Company story & values -->
     <section class="about-content container">
-      <div class="company-story" data-aos="fade-right">
+      <div class="company-story">
         <h2>Our Story</h2>
-        <p>LX Pest Solutions was founded in 2010 by Alex Brown, a certified pest management professional with a passion for providing effective solutions while prioritizing environmental responsibility.</p>
-        <p>What began as a small local operation has grown into one of Adelaide's most trusted pest control services, with a team of certified professionals serving both residential and commercial clients across the metropolitan area.</p>
-        <p>Our growth and success stem from our unwavering commitment to three core principles: exceptional service, environmental responsibility, and guaranteed results. These principles guide every aspect of our operation, from the products we choose to the training our technicians receive.</p>
+        <p>LX Pest Solutions was founded in 2010 by Alex Brown, a certified pest management professional with a passion for providing effective solutions that prioritize environmental responsibility.</p>
+        <p>What began as a small local operation has grown into one of Adelaide’s most trusted pest control services, with a team of certified professionals serving both residential and commercial clients citywide.</p>
+        <p>Our success stems from our unwavering commitment to exceptional service, environmental stewardship, and guaranteed results—principles guiding every aspect of our operations.</p>
         <div class="company-stats">
           <div class="stat">
             <span class="stat-number">15+</span>
@@ -496,53 +150,92 @@
           </div>
         </div>
       </div>
-      
-      <div class="company-values" data-aos="fade-left">
+
+      <div class="company-values">
         <h2>Our Values & Certifications</h2>
         <ul>
-          <li><strong>Eco-Friendly & Sustainable Treatments:</strong> We select the most environmentally responsible products and methods that effectively control pests while minimizing environmental impact.</li>
-          <li><strong>Certified Professionals & Guaranteed Service:</strong> Our technicians undergo continuous training to stay current with the latest pest control technologies and techniques.</li>
-          <li><strong>Rapid Response & Modern Technology:</strong> We leverage advanced pest monitoring systems and digital reporting to provide faster, more effective service.</li>
-          <li><strong>Transparency & Education:</strong> We believe in empowering our customers through education about pest prevention and management.</li>
-          <li><strong>Community Involvement:</strong> We actively participate in local environmental initiatives and provide educational workshops for schools and community groups.</li>
+          <li><strong>Eco-Friendly & Sustainable Treatments:</strong> We use environmentally responsible products and methods that effectively eliminate pests while minimizing ecological impact.</li>
+          <li><strong>Certified Professionals & Guaranteed Service:</strong> Our technicians undergo ongoing training to remain at the forefront of pest-control technology.</li>
+          <li><strong>Rapid Response & Modern Technology:</strong> We leverage advanced pest-monitoring systems and digital reporting to provide faster, more effective service.</li>
+          <li><strong>Transparency & Education:</strong> We empower customers by educating them about pest prevention and management best practices.</li>
+          <li><strong>Community Involvement:</strong> We actively participate in local environmental initiatives and offer educational workshops to schools and community groups.</li>
         </ul>
         <div class="certifications">
-          <img src="images/certification1.svg" alt="Licensed Pest Management Technicians" class="certification-badge" width="80" height="80" loading="lazy" decoding="async">
-          <img src="images/certification2.svg" alt="Eco-Friendly Certified" class="certification-badge" width="80" height="80" loading="lazy" decoding="async">
-          <img src="images/certification3.svg" alt="Australian Environmental Pest Managers Association" class="certification-badge" width="80" height="80" loading="lazy" decoding="async">
-          <img src="images/certification4.svg" alt="Master Technician Certified" class="certification-badge" width="80" height="80" loading="lazy" decoding="async">
+          <img
+            src="images/certification1.svg"
+            alt="Licensed Pest Management Technicians"
+            class="certification-badge"
+            width="80"
+            height="80"
+            loading="lazy"
+            decoding="async"
+          >
+          <img
+            src="images/certification2.svg"
+            alt="Eco-Friendly Certified"
+            class="certification-badge"
+            width="80"
+            height="80"
+            loading="lazy"
+            decoding="async"
+          >
+          <img
+            src="images/certification3.svg"
+            alt="Australian Environmental Pest Managers Association"
+            class="certification-badge"
+            width="80"
+            height="80"
+            loading="lazy"
+            decoding="async"
+          >
+          <img
+            src="images/certification4.svg"
+            alt="Master Technician Certified"
+            class="certification-badge"
+            width="80"
+            height="80"
+            loading="lazy"
+            decoding="async"
+          >
         </div>
       </div>
     </section>
-    
-    <!-- Mission and vision section -->
+
+    <!-- Mission & vision section -->
     <section class="mission-vision">
       <div class="container">
         <h2>Our Mission & Vision</h2>
         <div class="mission-vision-grid">
-          <div class="mission-box" data-aos="fade-up" data-aos-delay="100">
+          <div class="mission-box">
             <h3>Our Mission</h3>
-            <p>To provide exceptional, environmentally responsible pest management services that protect homes, businesses, and the health of our community while delivering peace of mind through guaranteed results.</p>
+            <p>To provide exceptional, environmentally responsible pest management services that protect homes, businesses, and public health—backed by guaranteed results and excellent customer care.</p>
           </div>
-          <div class="vision-box" data-aos="fade-up" data-aos-delay="200">
+          <div class="vision-box">
             <h3>Our Vision</h3>
-            <p>To be recognized as Adelaide's leader in sustainable pest management, setting the industry standard for effectiveness, environmental stewardship, and customer satisfaction.</p>
+            <p>To be recognized as Adelaide’s premier sustainable pest management provider, setting the standard for effectiveness, environmental stewardship, and client satisfaction.</p>
           </div>
         </div>
       </div>
     </section>
-    
+
     <!-- Team section -->
     <section class="team">
       <div class="container">
         <h2>Meet Our Team</h2>
         <div class="team-grid">
-          <article class="team-member" data-aos="fade-up" data-aos-delay="100">
-            <img src="images/team1.jpg" alt="Alex Brown, Founder & CEO" width="300" height="300" loading="lazy" decoding="async">
+          <article class="team-member">
+            <img
+              src="images/team1.jpg"
+              alt="Alex Brown, Founder & CEO"
+              width="300"
+              height="300"
+              loading="lazy"
+              decoding="async"
+            >
             <div class="team-member-content">
               <h3>Alex Brown</h3>
               <p class="position">Founder & CEO</p>
-              <p class="bio">With over 15 years of experience in pest management, Alex has established LX Pest Solutions as a leader in eco-friendly pest control services in Adelaide. He holds advanced certifications in Integrated Pest Management and Urban Pest Control.</p>
+              <p class="bio">With over 15 years in pest management, Alex has made LX Pest Solutions a leader in eco-friendly pest control. He holds advanced certifications in Integrated Pest Management and Urban Pest Control.</p>
               <div class="credentials">
                 <img src="images/credential1.svg" alt="Master Technician" class="credential-badge" width="30" height="30" loading="lazy" decoding="async">
                 <img src="images/credential2.svg" alt="Eco-Friendly Certified" class="credential-badge" width="30" height="30" loading="lazy" decoding="async">
@@ -550,26 +243,40 @@
               </div>
             </div>
           </article>
-          
-          <article class="team-member" data-aos="fade-up" data-aos-delay="200">
-            <img src="images/team2.jpg" alt="Maria Lopez, Operations Manager" width="300" height="300" loading="lazy" decoding="async">
+
+          <article class="team-member">
+            <img
+              src="images/team2.jpg"
+              alt="Maria Lopez, Operations Manager"
+              width="300"
+              height="300"
+              loading="lazy"
+              decoding="async"
+            >
             <div class="team-member-content">
               <h3>Maria Lopez</h3>
               <p class="position">Operations Manager</p>
-              <p class="bio">Maria ensures our operations run smoothly and efficiently, with a focus on customer satisfaction. Her background in environmental science informs our sustainable approach to pest management.</p>
+              <p class="bio">Maria ensures smooth operations and top-notch customer satisfaction. Her background in environmental science drives the sustainable approach of our services.</p>
               <div class="credentials">
                 <img src="images/credential4.svg" alt="Operations Certified" class="credential-badge" width="30" height="30" loading="lazy" decoding="async">
                 <img src="images/credential5.svg" alt="Customer Service Excellence" class="credential-badge" width="30" height="30" loading="lazy" decoding="async">
               </div>
             </div>
           </article>
-          
-          <article class="team-member" data-aos="fade-up" data-aos-delay="300">
-            <img src="images/team3.jpg" alt="James Wilson, Lead Technician" width="300" height="300" loading="lazy" decoding="async">
+
+          <article class="team-member">
+            <img
+              src="images/team3.jpg"
+              alt="James Wilson, Lead Technician"
+              width="300"
+              height="300"
+              loading="lazy"
+              decoding="async"
+            >
             <div class="team-member-content">
               <h3>James Wilson</h3>
               <p class="position">Lead Technician</p>
-              <p class="bio">James specializes in complex pest situations and leads our technician training programs. His expertise in non-toxic approaches has helped many clients with sensitive environments or specific health concerns.</p>
+              <p class="bio">James specializes in complex pest situations and leads our technician training. His expertise in low-toxicity methods helps protect sensitive environments.</p>
               <div class="credentials">
                 <img src="images/credential6.svg" alt="Advanced Technician" class="credential-badge" width="30" height="30" loading="lazy" decoding="async">
                 <img src="images/credential7.svg" alt="Commercial Specialist" class="credential-badge" width="30" height="30" loading="lazy" decoding="async">
@@ -579,81 +286,81 @@
         </div>
       </div>
     </section>
-    
+
     <!-- Company timeline -->
     <section class="company-timeline">
       <div class="container">
         <h2>Our Journey</h2>
         <div class="timeline">
           <div class="timeline-item left">
-            <div class="timeline-content" data-aos="fade-right">
+            <div class="timeline-content">
               <span class="timeline-year">2010</span>
               <h3>The Beginning</h3>
-              <p>LX Pest Solutions was founded by Alex Brown with a commitment to environmentally responsible pest control.</p>
+              <p>LX Pest Solutions is founded by Alex Brown with the aim of delivering eco-friendly pest control in Adelaide.</p>
             </div>
           </div>
           <div class="timeline-item right">
-            <div class="timeline-content" data-aos="fade-left">
+            <div class="timeline-content">
               <span class="timeline-year">2013</span>
               <h3>Eco-Friendly Certification</h3>
-              <p>Received our first environmental certification for sustainable pest management practices.</p>
+              <p>We receive our first environmental certification, recognizing our sustainable pest-management practices.</p>
             </div>
           </div>
           <div class="timeline-item left">
-            <div class="timeline-content" data-aos="fade-right">
+            <div class="timeline-content">
               <span class="timeline-year">2016</span>
               <h3>Commercial Expansion</h3>
-              <p>Expanded our services to include specialized solutions for restaurants, hotels, and commercial properties.</p>
+              <p>We expand our services to cater to restaurants, hotels, and large commercial properties.</p>
             </div>
           </div>
           <div class="timeline-item right">
-            <div class="timeline-content" data-aos="fade-left">
+            <div class="timeline-content">
               <span class="timeline-year">2019</span>
               <h3>Technology Integration</h3>
-              <p>Introduced digital reporting systems and advanced monitoring technology for improved service efficiency.</p>
+              <p>Implementation of advanced digital reporting systems and real-time pest monitoring solutions.</p>
             </div>
           </div>
           <div class="timeline-item left">
-            <div class="timeline-content" data-aos="fade-right">
+            <div class="timeline-content">
               <span class="timeline-year">2022</span>
               <h3>Training Academy</h3>
-              <p>Established our in-house training program to ensure all technicians meet our high standards of service.</p>
+              <p>We establish an in-house academy to keep our technicians updated on the latest pest control innovations.</p>
             </div>
           </div>
           <div class="timeline-item right">
-            <div class="timeline-content" data-aos="fade-left">
+            <div class="timeline-content">
               <span class="timeline-year">2024</span>
               <h3>Community Initiative</h3>
-              <p>Launched our community education program, providing workshops on sustainable pest prevention for schools and neighborhood groups.</p>
+              <p>Launch of a community education program, providing sustainable pest prevention workshops citywide.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
-    
-    <!-- Testimonial section -->
+
+    <!-- Testimonials -->
     <section class="about-testimonials">
       <div class="container">
         <h2>What Our Clients Say About Us</h2>
         <div class="testimonial-card-grid">
-          <blockquote class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-            <p>"I've worked with LX Pest Solutions for over 5 years at our restaurant. Their team is professional, thorough, and always responsive to our needs. Highly recommended for any business!"</p>
+          <blockquote class="testimonial-card">
+            <p>"I've worked with LX Pest Solutions for years at our restaurant. Their professional, thorough service never fails."</p>
             <footer>
               <img src="images/testimonial1.jpg" alt="Michael T." width="60" height="60" loading="lazy" decoding="async">
               <cite>Michael T., Restaurant Owner</cite>
             </footer>
           </blockquote>
-          
-          <blockquote class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-            <p>"As someone with environmental concerns, I was impressed by LX Pest's commitment to eco-friendly methods. They solved our termite problem without harsh chemicals, protecting our garden and pets."</p>
+
+          <blockquote class="testimonial-card">
+            <p>"Their eco-friendly approach fits perfectly with our values. They solved our termite problem safely and effectively."</p>
             <footer>
               <img src="images/testimonial2.jpg" alt="Sarah L." width="60" height="60" loading="lazy" decoding="async">
               <cite>Sarah L., Homeowner</cite>
             </footer>
           </blockquote>
-          
-          <blockquote class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
-            <p>"The technicians at LX Pest Solutions are knowledgeable, courteous, and efficient. They took the time to explain everything and answered all my questions. A truly professional service."</p>
+
+          <blockquote class="testimonial-card">
+            <p>"The technicians are knowledgeable and courteous. They explained every step and offered long-term prevention tips."</p>
             <footer>
               <img src="images/testimonial3.jpg" alt="David W." width="60" height="60" loading="lazy" decoding="async">
               <cite>David W., Property Manager</cite>
@@ -662,8 +369,8 @@
         </div>
       </div>
     </section>
-    
-    <!-- CTA section -->
+
+    <!-- CTA -->
     <section class="about-cta">
       <div class="container">
         <div class="cta-content">
@@ -683,7 +390,7 @@
           <img src="images/logo-white.svg" alt="LX Pest Solutions" width="180" height="40" loading="lazy" decoding="async">
           <p>Adelaide's most trusted pest control solution since 2010.</p>
         </div>
-        
+
         <nav class="footer-nav" aria-label="Footer Navigation">
           <h3>Quick Links</h3>
           <ul>
@@ -695,7 +402,7 @@
             <li><a href="privacy.html">Privacy Policy</a></li>
           </ul>
         </nav>
-        
+
         <div class="contact-info">
           <h3>Contact Us</h3>
           <address>
@@ -706,33 +413,104 @@
             </p>
           </address>
         </div>
-        
+
         <div class="social-links">
           <h3>Follow Us</h3>
           <div class="social-icons">
             <a href="https://facebook.com/lxpestsolutions" aria-label="Facebook" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z" fill="currentColor"/>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                   viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  d="M12 2.04c-5.5 0-10
+                  4.49-10 10.02 0 5 3.66 9.15
+                  8.44 9.9v-7H7.9v-2.9h2.54V9.85c0
+                  -2.51 1.49-3.89 3.78-3.89 1.09
+                  0 2.23.19 2.23.19v2.47h-1.26c
+                  -1.24 0-1.63.77-1.63 1.56v1.88h
+                  2.78l-.45 2.9h-2.33v7a10 10 0
+                  0 0 8.44-9.9c0-5.53-4.5-10.02
+                  -10-10.02z"
+                  fill="currentColor"
+                />
               </svg>
             </a>
             <a href="https://instagram.com/lxpestsolutions" aria-label="Instagram" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.17-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.17-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.17 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07m0-2.16c-3.26 0-3.67.01-4.95.07-1.28.06-2.15.26-2.91.56-.79.31-1.46.72-2.13 1.38-.66.67-1.07 1.34-1.38 2.13-.3.76-.5 1.63-.56 2.91-.06 1.28-.07 1.69-.07 4.95s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.63.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13-.67-.66-1.34-1.07-2.13-1.38-.76-.3-1.63-.5-2.91-.56-1.28-.06-1.69-.07-4.95-.07z" fill="currentColor"/>
-                <path d="M12 5.84c-3.4 0-6.16 2.76-6.16 6.16s2.76 6.16 6.16 6.16 6.16-2.76 6.16-6.16-2.76-6.16-6.16-6.16zm0 10.15c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" fill="currentColor"/>
-                <circle cx="18.41" cy="5.59" r="1.44" fill="currentColor"/>
-              </svg>
-            </a>
-            <a href="https://linkedin.com/company/lxpestsolutions" aria-label="LinkedIn" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" fill="currentColor"/>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                   viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  d="M12 2.16c3.2 0
+                  3.58.01 4.85.07 1.17.05 1.8.25
+                  2.23.41.56.22.96.48 1.38.9.42.42
+                  .68.82.9 1.38.17.42.36 1.06.41
+                  2.23.06 1.27.07 1.65.07 4.85s
+                  -.01 3.58-.07 4.85c-.05 1.17
+                  -.25 1.8-.41 2.23-.22.56-.48
+                  .96-.9 1.38-.42.42-.82.68
+                  -1.38.9-.42.17-1.06.36-2.23
+                  .41-1.27.06-1.65.07-4.85.07s
+                  -3.58-.01-4.85-.07c-1.17
+                  -.05-1.8-.25-2.23-.41-.56
+                  -.22-.96-.48-1.38-.9-.42
+                  -.42-.68-.82-.9-1.38-.17
+                  -.42-.36-1.06-.41-2.23-.06
+                  -1.27-.07-1.65-.07-4.85s.01
+                  -3.58.07-4.85c.05-1.17.25
+                  -1.8.41-2.23.22-.56.48-.96
+                  .9-1.38.42-.42.82-.68
+                  1.38-.9.42-.17 1.06-.36
+                  2.23-.41 1.27-.06 1.65
+                  -.07 4.85-.07m0-2.16
+                  c-3.26 0-3.67.01-4.95.07-1.28
+                  .06-2.15.26-2.91.56-.79
+                  .31-1.46.72-2.13 1.38
+                  -.66.67-1.07 1.34-1.38
+                  2.13-.3.76-.5 1.63-.56
+                  2.91-.06 1.28-.07 1.69
+                  -.07 4.95s.01 3.67.07
+                  4.95c.06 1.28.26 2.15
+                  .56 2.91.31.79.72 1.46
+                  1.38 2.13.67.66 1.34
+                  1.07 2.13 1.38.76.3 1.63
+                  .5 2.91.56 1.28.06 1.69
+                  .07 4.95.07s3.67-.01
+                  4.95-.07c1.28-.06 2.15
+                  -.26 2.91-.56.79-.31 1.46
+                  -.72 2.13-1.38.66-.67
+                  1.07-1.34 1.38-2.13.3
+                  -.76.5-1.63.56-2.91
+                  .06-1.28.07-1.69.07
+                  -4.95s-.01-3.67-.07
+                  -4.95c-.06-1.28-.26-2.15
+                  -.56-2.91-.31-.79-.72
+                  -1.46-1.38-2.13-.67
+                  -.66-1.34-1.07-2.13
+                  -1.38-.76-.3-1.63-.5
+                  -2.91-.56-1.28-.06
+                  -1.69-.07-4.95-.07z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M12 5.84c-3.4 0
+                  -6.16 2.76-6.16 6.16s2.76
+                  6.16 6.16 6.16 6.16-2.76
+                  6.16-6.16-2.76-6.16
+                  -6.16-6.16zm0 10.15c
+                  -2.21 0-4-1.79-4-4s
+                  1.79-4 4-4 4 1.79
+                  4 4-1.79 4-4 4z"
+                  fill="currentColor"
+                />
+                <circle cx="18.41" cy="5.59" r="1.44" fill="currentColor" />
               </svg>
             </a>
           </div>
         </div>
       </div>
-      
+
       <div class="footer-bottom">
-        <p class="copyright">&copy; 2025 LX Pest Solutions. All rights reserved.</p>
+        <p class="copyright">
+          &copy; 2025 LX Pest Solutions. All rights reserved.
+        </p>
         <p class="footer-legal">
           <a href="terms.html">Terms & Conditions</a> |
           <a href="privacy.html">Privacy Policy</a>
@@ -741,97 +519,7 @@
     </div>
   </footer>
 
-  <!-- JavaScript -->
+  <!-- Main JavaScript -->
   <script src="../js/scripts.js" defer></script>
-  
-  <!-- Animation on scroll library (optional) -->
-  <script>
-    // Simple animation on scroll effect (placeholder for AOS library)
-    document.addEventListener('DOMContentLoaded', () => {
-      const animatedElements = document.querySelectorAll('[data-aos]');
-      
-      const isElementInViewport = (el) => {
-        const rect = el.getBoundingClientRect();
-        return (
-          rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
-          rect.bottom >= 0
-        );
-      };
-      
-      const handleScroll = () => {
-        animatedElements.forEach(element => {
-          if (isElementInViewport(element)) {
-            // Extract animation type and delay
-            const animation = element.getAttribute('data-aos');
-            const delay = element.getAttribute('data-aos-delay') || 0;
-            
-            // Apply animation with delay
-            setTimeout(() => {
-              element.classList.add('animated', animation);
-            }, delay);
-          }
-        });
-      };
-      
-      // Add basic CSS animations
-      const style = document.createElement('style');
-      style.textContent = `
-        .animated {
-          animation-duration: 0.8s;
-          animation-fill-mode: both;
-        }
-        
-        @keyframes fade-up {
-          from {
-            opacity: 0;
-            transform: translate3d(0, 20px, 0);
-          }
-          to {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
-          }
-        }
-        
-        @keyframes fade-right {
-          from {
-            opacity: 0;
-            transform: translate3d(-20px, 0, 0);
-          }
-          to {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
-          }
-        }
-        
-        @keyframes fade-left {
-          from {
-            opacity: 0;
-            transform: translate3d(20px, 0, 0);
-          }
-          to {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
-          }
-        }
-        
-        .fade-up {
-          animation-name: fade-up;
-        }
-        
-        .fade-right {
-          animation-name: fade-right;
-        }
-        
-        .fade-left {
-          animation-name: fade-left;
-        }
-      `;
-      document.head.appendChild(style);
-      
-      // Initial check and scroll listener
-      handleScroll();
-      window.addEventListener('scroll', handleScroll);
-    });
-  </script>
 </body>
 </html>

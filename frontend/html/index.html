@@ -11,7 +11,7 @@
   <!-- Preload critical assets -->
   <link rel="preload" href="../css/styles.css" as="style">
   <link rel="preload" href="../js/scripts.js" as="script">
-  <link rel="preload" href="fonts/montserrat-v15-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/montserrat-v15-latin-700.woff2" as="font" type="font/woff2" crossorigin>
   
   <!-- Open Graph tags for social sharing -->
   <meta property="og:title" content="LX Pest Solutions - Adelaide's Eco-Friendly Pest Control Experts">
@@ -25,9 +25,9 @@
   <!-- Favicon and related icons -->
   <link rel="icon" type="image/png" href="../images/Laxman_image1.jpg">
   <link rel="apple-touch-icon" sizes="180x180" href="../images/Laxman_image2.jpg">
-  <link rel="manifest" href="site.webmanifest">
+  <link rel="manifest" href="../site.webmanifest">
   
-  <!-- External Stylesheet (all styling moved here) -->
+  <!-- External Stylesheet -->
   <link rel="stylesheet" href="../css/styles.css">
   
   <!-- Font preconnect for performance -->
@@ -59,13 +59,7 @@
       },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         "opens": "08:00",
         "closes": "18:00"
       },
@@ -77,7 +71,7 @@
   </script>
 </head>
 <body>
-  <!-- Header (common across all pages) -->
+  <!-- Header -->
   <header class="site-header" role="banner">
     <div class="container">
       <div class="header-inner">
@@ -95,21 +89,23 @@
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="booking.html" class="cta">Book Now</a></li>
+            <!-- Added Login link -->
+            <li><a href="login.html" class="login">Login</a></li>
           </ul>
         </nav>
       </div>
     </div>
   </header>
   
-  <!-- Urgency notification banner (styled via external CSS) -->
+  <!-- Urgency Notification Banner -->
   <div class="urgency-banner" role="alert" aria-live="polite">
     Summer pest alert: Book now to avoid 4-6 week waiting periods as temperatures rise!
   </div>
   
-  <!-- Main content -->
+  <!-- Main Content -->
   <main id="main-content">
     <!-- Hero Section -->
-    <section class="hero" style="background-image: url('../images/Laxman_image3.jpg');"></section>
+    <section class="hero" style="background-image: url('../images/Laxman_image3.jpg');">
       <div class="hero-overlay">
         <h1>Safe. Clean. Pest-Free.</h1>
         <p>Adelaide's most trusted pest control solutions since 2010</p>
@@ -138,7 +134,7 @@
       </div>
     </div>
     
-    <!-- Services Overview -->
+    <!-- Services Overview Section -->
     <section aria-labelledby="services-heading" class="services-overview">
       <div class="container">
         <h2 id="services-heading">Our Specialized Services</h2>
@@ -169,7 +165,7 @@
           </article>
           <article class="service-card" aria-labelledby="ant-control">
             <div class="service-icon">
-              <img src="../images/Laxman_image7,jpg" alt="" aria-hidden="true" width="60" height="60" loading="lazy">
+              <img src="../images/Laxman_image7.jpg" alt="" aria-hidden="true" width="60" height="60" loading="lazy">
             </div>
             <h3 id="ant-control">Ant Treatment</h3>
             <p>Eliminate colonies at the source with our advanced barrier protection technology.</p>
@@ -252,8 +248,8 @@
       </div>
     </section>
   </main>
-
-  <!-- Footer (common across all pages) -->
+  
+  <!-- Footer -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
@@ -285,22 +281,16 @@
         <div class="social-links">
           <h3>Follow Us</h3>
           <div class="social-icons">
+            <!-- Using external images for social icons -->
             <a href="https://facebook.com/lxpestsolutions" aria-label="Facebook" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z" fill="currentColor"/>
-              </svg>
+              <img src="../images/facebook.svg" alt="Facebook Icon" width="24" height="24">
             </a>
             <a href="https://instagram.com/lxpestsolutions" aria-label="Instagram" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.17-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.17-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.17 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07m0-2.16c-3.26 0-3.67.01-4.95.07-1.28.06-2.15.26-2.91.56-.79.31-1.46.72-2.13 1.38-.66.67-1.07 1.34-1.38 2.13-.3.76-.5 1.63-.56 2.91-.06 1.28-.07 1.69-.07 4.95s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.63.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13-.67-.66-1.34-1.07-2.13-1.38-.76-.3-1.63-.5-2.91-.56-1.28-.06-1.69-.07-4.95-.07z" fill="currentColor"/>
-                <path d="M12 5.84c-3.4 0-6.16 2.76-6.16 6.16s2.76 6.16 6.16 6.16 6.16-2.76 6.16-6.16-2.76-6.16-6.16-6.16zm0 10.15c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" fill="currentColor"/>
-                <circle cx="18.41" cy="5.59" r="1.44" fill="currentColor"/>
-              </svg>
+              <img src="../images/instagram.svg" alt="Instagram Icon" width="24" height="24">
             </a>
           </div>
         </div>
       </div>
-      
       <div class="footer-bottom">
         <p class="copyright">&copy; 2025 LX Pest Solutions. All rights reserved.</p>
         <p class="footer-legal">
@@ -310,8 +300,8 @@
       </div>
     </div>
   </footer>
-
-  <!-- Live Activity Notification (hidden by default; styled via external CSS) -->
+  
+  <!-- Live Activity Notification -->
   <div class="live-activity" id="liveActivity" aria-live="polite" role="status">
     <img src="../images/Laxman_image4.jpg" alt="" aria-hidden="true" width="40" height="40">
     <div class="live-activity-text">
@@ -319,64 +309,8 @@
     </div>
     <button class="close-notification" aria-label="Close notification">&times;</button>
   </div>
-
+  
   <!-- JavaScript -->
-  <script src="../js/scripts.js" type="module" defer></script>
-  <script>
-    let activityTimeout;
-    const liveActivity = document.getElementById('liveActivity');
-    const closeBtn = document.querySelector('.close-notification');
-    const activityData = [
-      {name: 'John', location: 'Prospect', service: 'pest inspection'},
-      {name: 'Sarah', location: 'Norwood', service: 'termite treatment'},
-      {name: 'Michael', location: 'Glenelg', service: 'rodent control'},
-      {name: 'Emma', location: 'Semaphore', service: 'cockroach treatment'},
-      {name: 'David', location: 'North Adelaide', service: 'ant control'},
-      {name: 'Jessica', location: 'Burnside', service: 'spider removal'},
-      {name: 'Robert', location: 'Henley Beach', service: 'commercial pest control'},
-      {name: 'Lisa', location: 'Mitcham', service: 'pest inspection'}
-    ];
-    
-    window.addEventListener('load', function() {
-      setTimeout(initializeNotifications, 15000);
-      if (closeBtn) {
-        closeBtn.addEventListener('click', hideNotification);
-      }
-    });
-    
-    function initializeNotifications() {
-      showNotification();
-      requestAnimationFrame(() => {
-        if (liveActivity) liveActivity.style.display = 'flex';
-      });
-    }
-    
-    function showNotification() {
-      if (!liveActivity) return;
-      const activity = activityData[Math.floor(Math.random() * activityData.length)];
-      const textEl = liveActivity.querySelector('.live-activity-text');
-      if (textEl) {
-        textEl.innerHTML = `<span>${activity.name} from ${activity.location}</span> just booked a ${activity.service}`;
-      }
-      liveActivity.style.display = 'flex';
-      liveActivity.style.opacity = '0';
-      requestAnimationFrame(() => {
-        liveActivity.style.opacity = '1';
-      });
-      activityTimeout = setTimeout(() => {
-        hideNotification();
-        setTimeout(showNotification, 45000 + Math.random() * 30000);
-      }, 8000);
-    }
-    
-    function hideNotification() {
-      if (!liveActivity) return;
-      if (activityTimeout) clearTimeout(activityTimeout);
-      liveActivity.style.opacity = '0';
-      setTimeout(() => {
-        liveActivity.style.display = 'none';
-      }, 300);
-    }
-  </script>
+  <script src="../js/scripts.js" defer></script>
 </body>
 </html>

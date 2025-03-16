@@ -1,109 +1,39 @@
-/**
- * LX Pest Solutions - Main Stylesheet
- * Version: 1.0.0
- * 
- * This is the primary stylesheet for the LX Pest Solutions website.
- * It follows a modular approach with CSS custom properties for theming.
- * 
- * Table of Contents:
- * 1. CSS Variables & Global Settings
- * 2. Global Reset & Base Styles
- * 3. Typography
- * 4. Layout & Grid Systems
- * 5. Header & Navigation
- * 6. Hero Sections
- * 7. Common Components
- * 8. Form Elements
- * 9. Interactive Elements
- * 10. Cards & Containers
- * 11. Testimonials
- * 12. Page-Specific Styles
- * 13. Footer
- * 14. Utility Classes
- * 15. Animations
- * 16. Media Queries
- * 17. Print Styles
- * 18. Accessibility Enhancements
- */
-
-/* ==========================================================================
-   1. CSS Variables & Global Settings
-   ========================================================================== */
 :root {
-  /* Color Palette - Primary */
   --primary-color: #1A4D7C;
-  /* Deep blue for header & footer */
   --primary-dark: #0E3A66;
-  /* Darker shade for hover states */
   --primary-light: #C5D8E8;
-  /* Light blue for backgrounds */
-
-  /* Color Palette - Secondary */
   --secondary-color: #2E8B57;
-  /* Vibrant green accents */
   --secondary-dark: #1F7346;
-  /* Darker shade for hover states */
   --secondary-light: #D0E8DC;
-  /* Light green for subtle backgrounds */
-
-  /* Color Palette - Accent */
   --accent-color: #FF7F50;
-  /* Alert orange for CTAs */
   --accent-dark: #E5683C;
-  /* Darker orange for hover states */
   --accent-light: #FFE9E0;
-  /* Light orange for highlights */
-
-  /* Color Palette - Neutral */
   --background-color: #FFFFFF;
-  /* Clean white background */
   --text-color: #333333;
-  /* Dark charcoal for main text */
   --text-light: #555555;
-  /* Medium gray for secondary content */
   --border-color: #DDDDDD;
-  /* Light gray for borders */
   --white: #FFFFFF;
   --black: #000000;
   --light-grey: #F5F5F5;
   --medium-grey: #E0E0E0;
   --dark-grey: #555555;
-
-  /* Color Palette - Feedback */
   --success-color: #4CAF50;
-  /* Green for success messages */
   --success-light: #E8F5E9;
-  /* Light green background */
   --warning-color: #FFC107;
-  /* Amber for warnings */
   --warning-light: #FFF8E1;
-  /* Light amber background */
   --error-color: #F44336;
-  /* Red for errors */
   --error-light: #FFEBEE;
-  /* Light red background */
   --info-color: #2196F3;
-  /* Blue for information */
   --info-light: #E3F2FD;
-  /* Light blue background */
-
-  /* Spacing System - Based on 4px grid */
+  --hero-gradient-start: rgba(0, 87, 146, 0.8);
+  --hero-gradient-end: rgba(107, 162, 146, 0.8);
   --space-xxs: 0.25rem;
-  /* 4px */
   --space-xs: 0.5rem;
-  /* 8px */
   --space-sm: 1rem;
-  /* 16px */
   --space-md: 1.5rem;
-  /* 24px */
   --space-lg: 2rem;
-  /* 32px */
   --space-xl: 3rem;
-  /* 48px */
   --space-xxl: 4rem;
-  /* 64px */
-
-  /* Typography */
   --font-heading: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-base: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-size-base: 16px;
@@ -113,32 +43,22 @@
   --line-height-tight: 1.2;
   --line-height-base: 1.6;
   --line-height-loose: 1.8;
-
-  /* Shadows */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
   --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
   --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.15);
-
-  /* Border Radius */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-pill: 9999px;
-
-  /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
   --transition-slow: 0.5s ease;
-
-  /* Container Widths */
   --container-sm: 540px;
   --container-md: 720px;
   --container-lg: 960px;
   --container-xl: 1140px;
   --container-max: 1320px;
-
-  /* Z-index layers */
   --z-basement: -1;
   --z-floor: 0;
   --z-dropdown: 1000;
@@ -150,9 +70,6 @@
   --z-tooltip: 1070;
 }
 
-/* ==========================================================================
-     2. Global Reset & Base Styles
-     ========================================================================== */
 *,
 *::before,
 *::after {
@@ -166,7 +83,6 @@ html {
   scroll-behavior: smooth;
   height: 100%;
   -webkit-text-size-adjust: 100%;
-  /* Prevent font size adjustment on orientation change */
 }
 
 body {
@@ -182,7 +98,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Skip link for keyboard accessibility */
 .skip-link {
   position: absolute;
   top: -100px;
@@ -202,19 +117,16 @@ body {
   outline-offset: 2px;
 }
 
-/* Remove list styles */
 ul,
 ol {
   list-style: none;
 }
 
-/* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
   color: var(--primary-color);
 }
 
-/* Remove default margin and font styles on form elements */
 button,
 input,
 select,
@@ -223,7 +135,6 @@ textarea {
   color: inherit;
 }
 
-/* Make images and embedded content responsive */
 img,
 picture,
 video,
@@ -234,21 +145,17 @@ svg {
   height: auto;
 }
 
-/* Remove default border on abbreviations */
 abbr[title] {
   border-bottom: none;
   text-decoration: underline;
   text-decoration: underline dotted;
 }
 
-/* Allow only vertical resize on textareas */
 textarea {
   resize: vertical;
 }
 
-/* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
@@ -259,9 +166,6 @@ textarea {
   }
 }
 
-/* ==========================================================================
-     3. Typography
-     ========================================================================== */
 h1,
 h2,
 h3,
@@ -303,7 +207,6 @@ p {
   margin-bottom: var(--space-md);
 }
 
-/* Strong and emphasis */
 strong,
 b {
   font-weight: var(--font-weight-bold);
@@ -314,7 +217,6 @@ i {
   font-style: italic;
 }
 
-/* Links */
 a {
   color: var(--primary-color);
   text-decoration: none;
@@ -325,7 +227,6 @@ a:hover {
   color: var(--primary-dark);
 }
 
-/* Blockquotes */
 blockquote {
   padding: var(--space-md);
   border-left: 4px solid var(--primary-color);
@@ -345,7 +246,6 @@ cite {
   margin-top: var(--space-xs);
 }
 
-/* Code, pre */
 code {
   font-family: monospace;
   padding: 0.2em 0.4em;
@@ -368,7 +268,6 @@ pre code {
   background-color: transparent;
 }
 
-/* Lists */
 ul:not([class]),
 ol:not([class]) {
   padding-left: var(--space-lg);
@@ -388,10 +287,6 @@ ol:not([class]) {
   list-style-type: decimal;
 }
 
-/* ==========================================================================
-     4. Layout & Grid Systems
-     ========================================================================== */
-/* Container */
 .container {
   width: 100%;
   padding-right: var(--space-sm);
@@ -401,7 +296,6 @@ ol:not([class]) {
   max-width: var(--container-xl);
 }
 
-/* Responsive containers */
 @media (min-width: 576px) {
   .container {
     max-width: var(--container-sm);
@@ -432,14 +326,12 @@ ol:not([class]) {
   }
 }
 
-/* Grid system */
 .grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: var(--space-md);
 }
 
-/* Grid column spans */
 .col-1 {
   grid-column: span 1;
 }
@@ -488,7 +380,6 @@ ol:not([class]) {
   grid-column: span 12;
 }
 
-/* Responsive grid columns */
 @media (min-width: 576px) {
   .col-sm-1 {
     grid-column: span 1;
@@ -689,7 +580,6 @@ ol:not([class]) {
   }
 }
 
-/* Flexbox layouts */
 .flex {
   display: flex;
 }
@@ -746,7 +636,6 @@ ol:not([class]) {
   align-items: stretch;
 }
 
-/* Gap utilities */
 .gap-xs {
   gap: var(--space-xs);
 }
@@ -767,9 +656,6 @@ ol:not([class]) {
   gap: var(--space-xl);
 }
 
-/* ==========================================================================
-     5. Header & Navigation
-     ========================================================================== */
 .site-header {
   background: var(--primary-color);
   color: var(--white);
@@ -807,7 +693,6 @@ ol:not([class]) {
   text-decoration: none;
 }
 
-/* Main navigation */
 .main-nav ul {
   display: flex;
   list-style: none;
@@ -830,7 +715,6 @@ ol:not([class]) {
   color: var(--accent-color);
 }
 
-/* Active link indicator */
 .main-nav ul li a.active::after {
   content: '';
   position: absolute;
@@ -861,7 +745,6 @@ ol:not([class]) {
   transform: scaleX(1);
 }
 
-/* CTA in navigation */
 .main-nav ul li a.cta {
   background: var(--secondary-color);
   padding: 10px 18px;
@@ -881,7 +764,6 @@ ol:not([class]) {
   display: none;
 }
 
-/* Mobile navigation toggle */
 .mobile-menu-toggle {
   display: none;
   background: none;
@@ -920,7 +802,6 @@ ol:not([class]) {
   transform: translateY(8px);
 }
 
-/* Transformed hamburger when menu is open */
 .mobile-menu-toggle[aria-expanded="true"] .hamburger {
   background: transparent;
 }
@@ -933,7 +814,6 @@ ol:not([class]) {
   transform: rotate(-45deg);
 }
 
-/* Screen reader only elements */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -946,7 +826,6 @@ ol:not([class]) {
   border-width: 0;
 }
 
-/* Mobile navigation styles */
 @media (max-width: 768px) {
   .mobile-menu-toggle {
     display: block;
@@ -999,16 +878,13 @@ ol:not([class]) {
   }
 }
 
-/* ==========================================================================
-     6. Hero Sections
-     ========================================================================== */
 .hero {
   position: relative;
   height: 70vh;
   min-height: 400px;
   max-height: 700px;
-  background: linear-gradient(135deg, rgba(0, 87, 146, 0.8), rgba(107, 162, 146, 0.8)),
-    url('images/hero-bg.jpg') center/cover;
+  background: linear-gradient(135deg, var(--hero-gradient-start), var(--hero-gradient-end)),
+    url('../images/Laxman_image1.jpg') center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1018,7 +894,6 @@ ol:not([class]) {
   z-index: var(--z-floor);
 }
 
-/* Hero background overlay */
 .hero::before {
   content: '';
   position: absolute;
@@ -1066,7 +941,6 @@ ol:not([class]) {
   text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
 }
 
-/* Secondary hero for interior pages */
 .secondary-hero {
   height: 40vh;
   min-height: 150px;
@@ -1077,7 +951,6 @@ ol:not([class]) {
   font-size: 3em;
 }
 
-/* Hero responsive adjustments */
 @media (max-width: 768px) {
   .hero-overlay h1 {
     font-size: 2.5em;
@@ -1102,10 +975,6 @@ ol:not([class]) {
   }
 }
 
-/* ==========================================================================
-     7. Common Components
-     ========================================================================== */
-/* CTA Button */
 .cta-button {
   display: inline-block;
   background: var(--secondary-color);
@@ -1138,7 +1007,6 @@ ol:not([class]) {
   transform: translateY(-1px);
 }
 
-/* Button variations */
 .cta-button.large {
   padding: 16px 36px;
   font-size: 1.2em;
@@ -1168,7 +1036,6 @@ ol:not([class]) {
   color: var(--white);
 }
 
-/* Button with loading state */
 .cta-button.loading {
   position: relative;
   color: transparent;
@@ -1197,7 +1064,6 @@ ol:not([class]) {
   }
 }
 
-/* CTA Banner */
 .cta-banner {
   background: var(--secondary-color);
   color: var(--white);
@@ -1239,7 +1105,6 @@ ol:not([class]) {
   background: var(--accent-dark);
 }
 
-/* Stats counter */
 .stats-counter {
   background: var(--light-grey);
   border-radius: var(--radius-md);
@@ -1277,10 +1142,6 @@ ol:not([class]) {
   color: var(--text-color);
 }
 
-/* ==========================================================================
-     8. Form Elements
-     ========================================================================== */
-/* Form container */
 .form-container {
   background: var(--white);
   border-radius: var(--radius-md);
@@ -1289,7 +1150,6 @@ ol:not([class]) {
   margin: var(--space-lg) 0;
 }
 
-/* Form field */
 .form-field {
   margin-bottom: var(--space-md);
 }
@@ -1298,7 +1158,6 @@ ol:not([class]) {
   grid-column: 1 / -1;
 }
 
-/* Labels */
 label {
   display: block;
   margin-bottom: var(--space-xs);
@@ -1311,7 +1170,6 @@ label {
   margin-left: 2px;
 }
 
-/* Input, select, textarea */
 input[type="text"],
 input[type="email"],
 input[type="tel"],
@@ -1328,7 +1186,6 @@ textarea {
   font-size: 1em;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
   -webkit-appearance: none;
-  /* Fix for iOS styling */
   appearance: none;
   background-color: var(--white);
 }
@@ -1348,7 +1205,6 @@ textarea.error {
   background-color: var(--error-light);
 }
 
-/* Custom select arrow */
 select {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23333' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -1357,13 +1213,11 @@ select {
   padding-right: 40px;
 }
 
-/* Textarea */
 textarea {
   min-height: 120px;
   resize: vertical;
 }
 
-/* Checkbox and radio */
 .checkbox-container,
 .radio-container {
   display: flex;
@@ -1445,14 +1299,12 @@ input[type="radio"]:checked+label:after {
   background: var(--white);
 }
 
-/* Form grid layout */
 .form-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--space-md);
 }
 
-/* Error message */
 .error-message {
   color: var(--error-color);
   font-size: 0.875em;
@@ -1475,7 +1327,6 @@ input[type="radio"]:checked+label:after {
   }
 }
 
-/* Success message */
 .form-success {
   display: none;
   background: var(--success-light);
@@ -1490,7 +1341,6 @@ input[type="radio"]:checked+label:after {
   animation: fadeIn var(--transition-fast);
 }
 
-/* Form error message */
 .form-error {
   background: var(--error-light);
   border-left: 4px solid var(--error-color);
@@ -1499,10 +1349,6 @@ input[type="radio"]:checked+label:after {
   border-radius: var(--radius-sm);
 }
 
-/* ==========================================================================
-     9. Interactive Elements
-     ========================================================================== */
-/* Accordion */
 .accordion {
   margin: var(--space-lg) 0;
 }
@@ -1588,7 +1434,6 @@ input[type="radio"]:checked+label:after {
   }
 }
 
-/* Tabs */
 .tabs {
   margin: var(--space-lg) 0;
 }
@@ -1597,16 +1442,13 @@ input[type="radio"]:checked+label:after {
   display: flex;
   overflow-x: auto;
   scrollbar-width: none;
-  /* Firefox */
   -ms-overflow-style: none;
-  /* IE/Edge */
   margin-bottom: var(--space-md);
   border-bottom: 1px solid var(--border-color);
 }
 
 .tab-list::-webkit-scrollbar {
   display: none;
-  /* Chrome/Safari/Opera */
 }
 
 .tab-button {
@@ -1656,7 +1498,6 @@ input[type="radio"]:checked+label:after {
   animation: fadeIn var(--transition-fast);
 }
 
-/* Tooltip */
 .tooltip {
   position: relative;
 }
@@ -1695,10 +1536,6 @@ input[type="radio"]:checked+label:after {
   z-index: var(--z-tooltip);
 }
 
-/* ==========================================================================
-     10. Cards & Containers
-     ========================================================================== */
-/* Basic card */
 .card {
   background: var(--white);
   border-radius: var(--radius-md);
@@ -1735,7 +1572,6 @@ input[type="radio"]:checked+label:after {
   border-top: 1px solid var(--border-color);
 }
 
-/* Image card */
 .image-card {
   background: var(--white);
   border-radius: var(--radius-md);
@@ -1786,7 +1622,6 @@ input[type="radio"]:checked+label:after {
   justify-content: flex-end;
 }
 
-/* Service card */
 .service-card {
   background: var(--white);
   border-radius: var(--radius-md);
@@ -1861,7 +1696,6 @@ input[type="radio"]:checked+label:after {
   transform: translateX(3px);
 }
 
-/* Services grid */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1869,10 +1703,6 @@ input[type="radio"]:checked+label:after {
   margin: var(--space-lg) 0;
 }
 
-/* ==========================================================================
-     11. Testimonials
-     ========================================================================== */
-/* Testimonials section */
 .testimonials {
   background: var(--white);
   padding: var(--space-xl) 0;
@@ -1886,7 +1716,6 @@ input[type="radio"]:checked+label:after {
   margin-bottom: var(--space-lg);
 }
 
-/* Testimonial carousel */
 .testimonial-carousel {
   display: flex;
   gap: 30px;
@@ -1894,15 +1723,12 @@ input[type="radio"]:checked+label:after {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  /* Firefox */
   -ms-overflow-style: none;
-  /* IE/Edge */
   margin-bottom: var(--space-lg);
 }
 
 .testimonial-carousel::-webkit-scrollbar {
   display: none;
-  /* Chrome/Safari/Opera */
 }
 
 .testimonial {
@@ -1954,7 +1780,6 @@ input[type="radio"]:checked+label:after {
   color: var(--primary-color);
 }
 
-/* Carousel controls */
 .carousel-controls {
   display: flex;
   justify-content: center;
@@ -2007,10 +1832,6 @@ input[type="radio"]:checked+label:after {
   background: var(--primary-color);
 }
 
-/* ==========================================================================
-     12. Page-Specific Styles
-     ========================================================================== */
-/* About page */
 .about-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2100,7 +1921,6 @@ input[type="radio"]:checked+label:after {
   padding: var(--space-md);
 }
 
-/* Services page */
 .services-list {
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -2148,7 +1968,6 @@ input[type="radio"]:checked+label:after {
   padding-left: var(--space-md);
 }
 
-/* Contact page */
 .contact-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2216,7 +2035,6 @@ input[type="radio"]:checked+label:after {
   height: 100%;
 }
 
-/* Booking page */
 .booking-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -2274,9 +2092,6 @@ input[type="radio"]:checked+label:after {
   letter-spacing: 1px;
 }
 
-/* ==========================================================================
-     13. Footer
-     ========================================================================== */
 .site-footer {
   background: var(--primary-color);
   color: var(--white);
@@ -2415,10 +2230,6 @@ input[type="radio"]:checked+label:after {
   color: var(--accent-color);
 }
 
-/* ==========================================================================
-     14. Utility Classes
-     ========================================================================== */
-/* Text alignment */
 .text-left {
   text-align: left;
 }
@@ -2431,7 +2242,6 @@ input[type="radio"]:checked+label:after {
   text-align: right;
 }
 
-/* Text colors */
 .text-primary {
   color: var(--primary-color);
 }
@@ -2452,7 +2262,6 @@ input[type="radio"]:checked+label:after {
   color: var(--white);
 }
 
-/* Background colors */
 .bg-primary {
   background-color: var(--primary-color);
 }
@@ -2473,7 +2282,6 @@ input[type="radio"]:checked+label:after {
   background-color: var(--white);
 }
 
-/* Font weights */
 .font-normal {
   font-weight: var(--font-weight-normal);
 }
@@ -2486,7 +2294,6 @@ input[type="radio"]:checked+label:after {
   font-weight: var(--font-weight-bold);
 }
 
-/* Font sizes */
 .text-xs {
   font-size: 0.75rem;
 }
@@ -2523,7 +2330,6 @@ input[type="radio"]:checked+label:after {
   font-size: 2.5rem;
 }
 
-/* Margins */
 .m-0 {
   margin: 0;
 }
@@ -2709,7 +2515,6 @@ input[type="radio"]:checked+label:after {
   margin-right: var(--space-xl);
 }
 
-/* Paddings */
 .p-0 {
   padding: 0;
 }
@@ -2890,7 +2695,6 @@ input[type="radio"]:checked+label:after {
   padding-right: var(--space-xl);
 }
 
-/* Display */
 .block {
   display: block;
 }
@@ -2911,7 +2715,6 @@ input[type="radio"]:checked+label:after {
   display: block;
 }
 
-/* Widths */
 .w-full {
   width: 100%;
 }
@@ -2940,7 +2743,6 @@ input[type="radio"]:checked+label:after {
   width: 75%;
 }
 
-/* Box shadows */
 .shadow-none {
   box-shadow: none;
 }
@@ -2961,7 +2763,6 @@ input[type="radio"]:checked+label:after {
   box-shadow: var(--shadow-xl);
 }
 
-/* Border radius */
 .rounded-none {
   border-radius: 0;
 }
@@ -2982,7 +2783,6 @@ input[type="radio"]:checked+label:after {
   border-radius: var(--radius-pill);
 }
 
-/* Visual helpers */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -2995,9 +2795,6 @@ input[type="radio"]:checked+label:after {
   border-width: 0;
 }
 
-/* ==========================================================================
-     15. Animations
-     ========================================================================== */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -3114,10 +2911,6 @@ input[type="radio"]:checked+label:after {
   animation: spin 1s linear infinite;
 }
 
-/* ==========================================================================
-     16. Media Queries
-     ========================================================================== */
-/* Mobile devices - portrait phones (576px and below) */
 @media (max-width: 576px) {
   :root {
     --font-size-base: 14px;
@@ -3167,7 +2960,6 @@ input[type="radio"]:checked+label:after {
   }
 }
 
-/* Small devices - landscape phones and small tablets (576px to 767px) */
 @media (min-width: 576px) and (max-width: 767px) {
   .hero-overlay h1 {
     font-size: 3em;
@@ -3189,7 +2981,6 @@ input[type="radio"]:checked+label:after {
   }
 }
 
-/* Medium devices - tablets (768px to 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
   .booking-container {
     grid-template-columns: 1fr;
@@ -3205,29 +2996,18 @@ input[type="radio"]:checked+label:after {
   }
 }
 
-/* Large devices - desktops (992px to 1199px) */
 @media (min-width: 992px) and (max-width: 1199px) {
   .footer-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-/* Extra large devices - large desktops (1200px and above) */
 @media (min-width: 1200px) {
   .container {
     padding: 0;
   }
 }
 
-/* High-DPI (Retina) displays */
-@media (-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) {
-  /* Provide higher resolution images */
-}
-
-/* ==========================================================================
-     17. Print Styles
-     ========================================================================== */
 @media print {
   @page {
     margin: 1.5cm;
@@ -3315,9 +3095,6 @@ input[type="radio"]:checked+label:after {
   }
 }
 
-/* ==========================================================================
-     18. Accessibility Enhancements
-     ========================================================================== */
 :focus {
   outline: 2px solid var(--accent-color);
   outline-offset: 2px;
@@ -3387,7 +3164,6 @@ input[type="radio"]:checked+label:after {
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
