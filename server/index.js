@@ -3,6 +3,9 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import router from './Route/authRoutes.js';
+import bookingRouter from './Route/bookingRoutes.js';
+import adminRouter from './Route/adminRoutes.js';
+import { createInitialAdmin } from './Controllers/adminController.js';
 
 // Load environment variables
 dotenv.config();
@@ -16,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser()); // For handling cookies
 
 // Define the port
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 // Basic route to test the server
 app.get('/', (req, res) => {
@@ -29,7 +32,20 @@ app.get('/', (req, res) => {
 // Link authentication routes
 app.use('/api/auth', router);
 
-// Start the server
-app.listen(PORT, () => {
+// Link booking routes
+app.use('/api/bookings', bookingRouter);
+
+// Link admin routes
+app.use('/api/admin', adminRouter);
+
+// Create initial admin account during server startup
+app.listen(PORT, async () => {
   console.log(`Server is running on http://localhost:${PORT}`);
+  
+  // Create initial admin account if environment variables are set
+  try {
+    await createInitialAdmin();
+  } catch (error) {
+    console.error("Error creating initial admin:", error);
+  }
 });
