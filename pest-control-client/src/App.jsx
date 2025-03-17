@@ -1,14 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
+import Home from "./pages/Home";
 import Login from "./pages/Login";
-
-// Placeholder for Dashboard
-const Dashboard = () => (
-  <div className="p-8">
-    <h1 className="text-2xl font-bold">Dashboard</h1>
-    <p>Welcome to your account!</p>
-  </div>
-);
+import Register from "./pages/Register";
+import ForgotPassword from "./pages/ForgotPassword";
+import Dashboard from "./pages/Dashboard";
 
 // Protected route wrapper
 const ProtectedRoute = ({ children }) => {
@@ -17,13 +13,13 @@ const ProtectedRoute = ({ children }) => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
       </div>
     );
   }
   
   if (!isAuthenticated) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" state={{ from: window.location.pathname }} />;
   }
   
   return children;
@@ -35,8 +31,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* Public routes */}
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          {/* Will add more routes later */}
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           
           {/* Protected routes */}
           <Route 
@@ -48,8 +46,8 @@ function App() {
             } 
           />
           
-          {/* Default route */}
-          <Route path="/" element={<Navigate to="/login" />} />
+          {/* Fallback route */}
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
