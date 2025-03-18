@@ -24,13 +24,19 @@ function Login() {
     e.preventDefault();
     setError("");
     setLoading(true);
-
+  
     try {
       const result = await login(email, password);
       
       if (result.success) {
         if (result.otp_required) {
-          setShowOtp(true);
+          // Instead of showing in-page OTP form, navigate to dedicated OTP page
+          navigate("/verify", {
+            state: { 
+              mode: "login",
+              redirectPath: redirectPath 
+            }
+          });
         } else {
           navigate(redirectPath);
         }
@@ -44,44 +50,8 @@ function Login() {
       setLoading(false);
     }
   };
-
-  const handleVerifyOtp = async (e) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
-
-    try {
-      const result = await verifyOTP(otp);
-      
-      if (result.success) {
-        navigate(redirectPath);
-      } else {
-        setError(result.message);
-      }
-    } catch (err) {
-      setError("An unexpected error occurred during verification. Please try again.");
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleResendOtp = async () => {
-    setError("");
-    setLoading(true);
-
-    try {
-      const result = await resendOTP();
-      if (!result.success) {
-        setError(result.message);
-      }
-    } catch (err) {
-      setError("Failed to resend OTP. Please try again.");
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  
+  
 
   return (
     <div className="login-container">

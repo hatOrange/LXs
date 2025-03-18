@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import cors from 'cors'; // Add this import
 import router from './Route/authRoutes.js';
 import bookingRouter from './Route/bookingRoutes.js';
 import adminRouter from './Route/adminRoutes.js';
@@ -13,6 +14,14 @@ dotenv.config();
 
 // Initialize express app
 const app = express();
+
+// CORS middleware - add this before other middleware
+app.use(cors({
+  origin: 'http://localhost:5173', // Your frontend URL
+  credentials: true, // Important for cookies to work
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Middleware
 app.use(bodyParser.json());
@@ -42,7 +51,7 @@ app.use('/api/admin', adminRouter);
 // Link admin booking routes
 app.use('/api/admin/bookings', adminBookingRouter);
 
-// Create initial admin account during server startup
+// Create initial admin account during server startup   
 app.listen(PORT, async () => {
   console.log(`Server is running on http://localhost:${PORT}`);
   

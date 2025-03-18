@@ -88,7 +88,7 @@ function Services() {
               <Link to="/" className="nav-link">Home</Link>
               <Link to="/services" className="nav-link active">Services</Link>
               <Link to="/about" className="nav-link">About</Link>
-              <Link to="/contact" className="nav-link">Contact</Link>
+              <Link to="/contacts" className="nav-link">Contact</Link>
             </div>
           </div>
           
@@ -133,7 +133,7 @@ function Services() {
           <Link to="/" className="nav-link">Home</Link>
           <Link to="/services" className="nav-link active">Services</Link>
           <Link to="/about" className="nav-link">About</Link>
-          <Link to="/contact" className="nav-link">Contact</Link>
+          <Link to="/contacts" className="nav-link">Contact</Link>
         </div>
       </header>
 

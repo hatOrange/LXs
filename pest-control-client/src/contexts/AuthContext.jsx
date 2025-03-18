@@ -1,6 +1,33 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import api from "../utils/api";
 
+// Error message extraction utility
+const extractErrorMessage = (error) => {
+  if (!error) return "An unknown error occurred";
+  
+  // If it's a string, return it directly
+  if (typeof error === 'string') return error;
+  
+  // If it's an array (validation errors), extract the messages
+  if (Array.isArray(error)) {
+    return error.map(err => {
+      if (typeof err === 'string') return err;
+      return err.msg || err.message || JSON.stringify(err);
+    }).join(', ');
+  }
+  
+  // If it has msg or message property
+  if (error.msg) return error.msg;
+  if (error.message) return error.message;
+  
+  // Last resort: stringify the object
+  try {
+    return JSON.stringify(error);
+  } catch (e) {
+    return "Error processing error message";
+  }
+};
+
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
@@ -61,13 +88,14 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return {
         success: false,
-        message: error.response?.data?.msg || "Login failed"
+        message: extractErrorMessage(error.response?.data?.msg) || "Login failed"
       };
     }
   };
 
   const register = async (userData) => {
     try {
+      console.log(userData);
       const response = await api.post("/auth/register", userData);
       
       return {
@@ -77,43 +105,89 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return {
         success: false,
-        message: error.response?.data?.msg || "Registration failed"
+        message: extractErrorMessage(error.response?.data?.msg) || "Registration failed"
       };
     }
   };
 
-  const verifyOTP = async (otp) => {
+  const verifyOTP = async (otp, mode = "standard", email = null) => {
     try {
-      const response = await api.post("/auth/verify", { otp });
+      let response;
+      
+      // Validate inputs
+      if (!otp) {
+        return {
+          success: false,
+          message: "Verification code is required"
+        };
+      }
+      
+      if (mode === "reset") {
+        // For password reset verification
+        if (!email) {
+          return {
+            success: false,
+            message: "Email is required for password reset verification"
+          };
+        }
+        
+        // For password reset, send both OTP and email
+        response = await api.post("/auth/verify-reset", { otp, email });
+      } else {
+        // For regular login/registration verification
+        response = await api.post("/auth/verify", { otp });
+      }
       
       if (response.data.success) {
-        // Fetch user details after verification
-        try {
-          const userResponse = await api.post("/auth/verifyToken");
-          if (userResponse.data.success) {
-            setUser({
-              id: userResponse.data.id,
-              email: userResponse.data.email
-            });
+        // For standard login/registration verification, fetch user details
+        if (mode === "standard") {
+          try {
+            const userResponse = await api.post("/auth/verifyToken");
+            if (userResponse.data.success) {
+              setUser({
+                id: userResponse.data.id,
+                email: userResponse.data.email
+              });
+            }
+          } catch (error) {
+            console.error("Error fetching user after OTP verification:", error);
           }
-        } catch (error) {
-          console.error("Error fetching user after OTP verification");
         }
 
         return {
           success: true,
-          message: "Verification successful"
+          message: response.data.msg || "Verification successful"
         };
       }
       
       return {
         success: false,
-        message: response.data.msg
+        message: response.data.msg || "Verification failed"
       };
     } catch (error) {
+      console.error("OTP verification error:", error);
+      
+      // Check for different error formats and log them for debugging
+      if (error.response) {
+        console.log("Error response data:", error.response.data);
+        
+        // Handle validation errors array
+        if (Array.isArray(error.response.data.msg)) {
+          return {
+            success: false,
+            message: extractErrorMessage(error.response.data.msg)
+          };
+        }
+        
+        return {
+          success: false,
+          message: extractErrorMessage(error.response.data.msg) || "Verification failed"
+        };
+      }
+      
       return {
         success: false,
-        message: error.response?.data?.msg || "Verification failed"
+        message: extractErrorMessage(error.message) || "Verification failed. Please try again."
       };
     }
   };
@@ -129,7 +203,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return {
         success: false,
-        message: error.response?.data?.msg || "Failed to resend OTP"
+        message: extractErrorMessage(error.response?.data?.msg) || "Failed to resend OTP"
       };
     }
   };
@@ -145,24 +219,14 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return {
         success: false,
-        message: error.response?.data?.msg || "Password reset request failed"
+        message: extractErrorMessage(error.response?.data?.msg) || "Password reset request failed"
       };
     }
   };
 
-  const resetPassword = async (otp, newPassword) => {
+  const resetPassword = async (newPassword) => {
     try {
-      // First verify OTP
-      const verifyResponse = await api.post("/auth/verify-reset", { otp });
-      
-      if (!verifyResponse.data.success) {
-        return {
-          success: false,
-          message: verifyResponse.data.msg
-        };
-      }
-      
-      // Reset password
+      // The backend uses the passwordResetToken cookie set during OTP verification
       const resetResponse = await api.post("/auth/reset-password", { newPassword });
       
       return {
@@ -172,7 +236,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return {
         success: false,
-        message: error.response?.data?.msg || "Password reset failed"
+        message: extractErrorMessage(error.response?.data?.msg) || "Password reset failed"
       };
     }
   };
@@ -198,7 +262,8 @@ export const AuthProvider = ({ children }) => {
       forgotPassword,
       resetPassword,
       logout,
-      isAuthenticated: !!user
+      isAuthenticated: !!user,
+      extractErrorMessage // Make the utility function available
     }}>
       {children}
     </AuthContext.Provider>

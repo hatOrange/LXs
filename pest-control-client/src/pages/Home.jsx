@@ -108,10 +108,10 @@ function Home() {
             using eco-friendly solutions and the latest techniques.
           </p>
           <div className="hero-actions">
-            <Link to="#book-service" className="hero-cta-primary">
+            <Link to="/services" className="hero-cta-primary">
               Book a Service
             </Link>
-            <Link to="#learn-more" className="hero-cta-secondary">
+            <Link to="/services" className="hero-cta-secondary">
               Learn More
             </Link>
           </div>
@@ -163,10 +163,10 @@ function Home() {
           <div className="footer-section">
             <h3>Services</h3>
             <ul className="footer-links">
-              <li><a href="#">Residential</a></li>
-              <li><a href="#">Commercial</a></li>
-              <li><a href="#">Termite Control</a></li>
-              <li><a href="#">Rodent Control</a></li>
+              <li><a href="/services">Residential</a></li>
+              <li><a href="/services">Commercial</a></li>
+              <li><a href="/services">Termite Control</a></li>
+              <li><a href="/services">Rodent Control</a></li>
             </ul>
           </div>
 

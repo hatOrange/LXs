@@ -16,10 +16,8 @@ function Register() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const [showOtp, setShowOtp] = useState(false);
-  const [otp, setOtp] = useState("");
 
-  const { register, verifyOTP } = useAuth();
+  const { register } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -55,9 +53,9 @@ function Register() {
       setError("Please enter a valid Australian phone number");
       return;
     }
-
+  
     setLoading(true);
-
+  
     try {
       const result = await register({
         name: formData.name,
@@ -67,8 +65,18 @@ function Register() {
       });
       
       if (result.success) {
-        setSuccess(result.message || "Registration successful! Please verify your email.");
-        setShowOtp(true);
+        // Show brief success message before redirecting
+        setSuccess(result.message || "Registration successful! Redirecting to verification...");
+        
+        // Short timeout to show the message
+        setTimeout(() => {
+          navigate("/verify", {
+            state: { 
+              mode: "register",
+              email: formData.email
+            }
+          });
+        }, 1500);
       } else {
         setError(result.message);
       }
@@ -80,41 +88,13 @@ function Register() {
     }
   };
 
-  const handleVerifyOtp = async (e) => {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
-    setLoading(true);
-
-    try {
-      const result = await verifyOTP(otp);
-      
-      if (result.success) {
-        setSuccess("Account verified successfully! Redirecting to login...");
-        setTimeout(() => navigate("/login"), 2000);
-      } else {
-        setError(result.message);
-      }
-    } catch (err) {
-      setError("An unexpected error occurred during verification. Please try again.");
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <div className="register-container">
       <div className="register-wrapper">
         <div className="register-header">
-          <h2 className="register-title">
-            {showOtp ? "Verify Your Email" : "Create a new account"}
-          </h2>
+          <h2 className="register-title">Create a new account</h2>
           <p className="register-subtitle">
-            {showOtp 
-              ? "Enter the verification code sent to your email" 
-              : "Join us to manage your pest control services"
-            }
+            Join us to manage your pest control services
           </p>
         </div>
 
@@ -140,219 +120,144 @@ function Register() {
           </div>
         )}
 
-        {!showOtp ? (
-          <form onSubmit={handleRegister}>
-            <div className="form-group">
-              <label htmlFor="name" className="form-label">Full Name</label>
-              <div className="form-input-wrapper">
-                <UserIcon className="form-icon" />
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="form-input"
-                  placeholder="John Doe"
-                />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="email" className="form-label">Email address</label>
-              <div className="form-input-wrapper">
-                <MailIcon className="form-icon" />
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="form-input"
-                  placeholder="you@example.com"
-                />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="phone" className="form-label">Phone Number (Australian)</label>
-              <div className="form-input-wrapper">
-                <PhoneIcon className="form-icon" />
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  autoComplete="tel"
-                  required
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="form-input"
-                  placeholder="+61412345678 or 0412345678"
-                />
-              </div>
-              <p className="form-hint">
-                Format: +61412345678, 0412345678, or 61412345678
-              </p>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="password" className="form-label">Password</label>
-              <div className="form-input-wrapper">
-                <LockIcon className="formicon" />
-                <input
-                  id="password"
-                  name="password"
-                  type={showPassword ? "text" : "password"}
-                  autoComplete="new-password"
-                  required
-                  value={formData.password}
-                  onChange={handleChange}
-                  className="form-input form-input-password"
-                  placeholder="••••••••"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="toggle-password"
-                >
-                  {showPassword ? (
-                    <EyeOffIcon className="h-5 w-5" />
-                  ) : (
-                    <EyeIcon className="h-5 w-5" />
-                  )}
-                </button>
-              </div>
-              <p className="form-hint">
-                At least 8 characters
-              </p>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
-              <div className="form-input-wrapper">
-                <LockIcon className="form-icon" />
-                <input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type={showPassword ? "text" : "password"}
-                  autoComplete="new-password"
-                  required
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  className="form-input"
-                  placeholder="••••••••"
-                />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <button
-                type="submit"
-                disabled={loading}
-                className="submit-button"
-              >
-                {loading ? (
-                  <svg 
-                    className="loading-spinner animate-spin -ml-1 mr-3 h-5 w-5 text-white" 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24"
-                  >
-                    <circle 
-                      className="opacity-25" 
-                      cx="12" 
-                      cy="12" 
-                      r="10" 
-                      stroke="currentColor" 
-                      strokeWidth="4"
-                    ></circle>
-                    <path 
-                      className="opacity-75" 
-                      fill="currentColor" 
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
-                ) : "Create Account"}
-              </button>
-            </div>
-          </form>
-        ) : (
-          <form onSubmit={handleVerifyOtp}>
-            <div className="form-group">
-              <label htmlFor="otp" className="form-label">
-                Verification Code
-              </label>
+        <form onSubmit={handleRegister}>
+          <div className="form-group">
+            <label htmlFor="name" className="form-label">Full Name</label>
+            <div className="form-input-wrapper">
+              <UserIcon className="form-icon" />
               <input
-                id="otp"
-                name="otp"
+                id="name"
+                name="name"
                 type="text"
                 required
-                value={otp}
-                onChange={(e) => setOtp(e.target.value)}
-                maxLength={6}
-                className="form-input otp-input"
-                placeholder="123456"
+                value={formData.name}
+                onChange={handleChange}
+                className="form-input"
+                placeholder="John Doe"
               />
-              <p className="form-hint text-center">
-                Enter the 6-digit code sent to your email
-              </p>
             </div>
+          </div>
 
-            <div className="form-group">
-              <button
-                type="submit"
-                disabled={loading}
-                className="submit-button"
-              >
-                {loading ? (
-                  <svg 
-                    className="loading-spinner animate-spin -ml-1 mr-3 h-5 w-5 text-white" 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24"
-                  >
-                    <circle 
-                      className="opacity-25" 
-                      cx="12" 
-                      cy="12" 
-                      r="10" 
-                      stroke="currentColor" 
-                      strokeWidth="4"
-                    ></circle>
-                    <path 
-                      className="opacity-75" 
-                      fill="currentColor" 
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
-                ) : "Verify"}
-              </button>
+          <div className="form-group">
+            <label htmlFor="email" className="form-label">Email address</label>
+            <div className="form-input-wrapper">
+              <MailIcon className="form-icon" />
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                className="form-input"
+                placeholder="you@example.com"
+              />
             </div>
+          </div>
 
-            <div className="text-sm text-center mt-4">
+          <div className="form-group">
+            <label htmlFor="phone" className="form-label">Phone Number (Australian)</label>
+            <div className="form-input-wrapper">
+              <PhoneIcon className="form-icon" />
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                required
+                value={formData.phone}
+                onChange={handleChange}
+                className="form-input"
+                placeholder="+61412345678 or 0412345678"
+              />
+            </div>
+            <p className="form-hint">
+              Format: +61412345678, 0412345678, or 61412345678
+            </p>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password" className="form-label">Password</label>
+            <div className="form-input-wrapper">
+              <LockIcon className="form-icon" />
+              <input
+                id="password"
+                name="password"
+                type={showPassword ? "text" : "password"}
+                autoComplete="new-password"
+                required
+                value={formData.password}
+                onChange={handleChange}
+                className="form-input form-input-password"
+                placeholder="••••••••"
+              />
               <button
                 type="button"
-                onClick={() => {/* Add resend OTP function here */}}
-                className="resend-link"
+                onClick={() => setShowPassword(!showPassword)}
+                className="toggle-password"
               >
-                Didn't receive a code? Resend
+                {showPassword ? (
+                  <EyeOffIcon className="h-5 w-5" />
+                ) : (
+                  <EyeIcon className="h-5 w-5" />
+                )}
               </button>
             </div>
+            <p className="form-hint">
+              At least 8 characters
+            </p>
+          </div>
 
-            <div className="text-sm text-center mt-2">
-              <button
-                type="button"
-                onClick={() => setShowOtp(false)}
-                className="back-link"
-              >
-                Back to sign up
-              </button>
+          <div className="form-group">
+            <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
+            <div className="form-input-wrapper">
+              <LockIcon className="form-icon" />
+              <input
+                id="confirmPassword"
+                name="confirmPassword"
+                type={showPassword ? "text" : "password"}
+                autoComplete="new-password"
+                required
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className="form-input"
+                placeholder="••••••••"
+              />
             </div>
-          </form>
-        )}
+          </div>
+
+          <div className="form-group">
+            <button
+              type="submit"
+              disabled={loading}
+              className="submit-button"
+            >
+              {loading ? (
+                <svg 
+                  className="loading-spinner animate-spin -ml-1 mr-3 h-5 w-5 text-white" 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  fill="none" 
+                  viewBox="0 0 24 24"
+                >
+                  <circle 
+                    className="opacity-25" 
+                    cx="12" 
+                    cy="12" 
+                    r="10" 
+                    stroke="currentColor" 
+                    strokeWidth="4"
+                  ></circle>
+                  <path 
+                    className="opacity-75" 
+                    fill="currentColor" 
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+              ) : "Create Account"}
+            </button>
+          </div>
+        </form>
 
         <div className="divider">
           <div className="divider-line"></div>

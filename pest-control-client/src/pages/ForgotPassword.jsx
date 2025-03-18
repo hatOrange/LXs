@@ -1,21 +1,34 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { ArrowLeftIcon, MailIcon, LockIcon, EyeIcon, EyeOffIcon } from "lucide-react";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
-  const [otp, setOtp] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const [step, setStep] = useState(1); // 1: Email, 2: OTP, 3: New password
+  // Now we only have two steps: 1=Email entry, 2=New password
+  const [step, setStep] = useState(1);
 
   const { forgotPassword, resetPassword } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Check if returning from successful OTP verification
+  useEffect(() => {
+    if (location.state?.otpVerified) {
+      setStep(2); // Move directly to password reset step
+      
+      // If email was passed back from OTP verification page, use it
+      if (location.state.email) {
+        setEmail(location.state.email);
+      }
+    }
+  }, [location.state]);
 
   const handleSubmitEmail = async (e) => {
     e.preventDefault();
@@ -28,7 +41,16 @@ function ForgotPassword() {
       
       if (result.success) {
         setSuccess("A verification code has been sent to your email.");
-        setStep(2);
+        
+        // Short timeout to show the success message before redirecting
+        setTimeout(() => {
+          navigate("/verify", {
+            state: { 
+              mode: "reset",
+              email: email // Pass email to maintain context
+            }
+          });
+        }, 1500);
       } else {
         setError(result.message);
       }
@@ -38,19 +60,6 @@ function ForgotPassword() {
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleVerifyOtp = async (e) => {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
-    
-    if (otp.length !== 6) {
-      setError("Please enter a valid 6-digit verification code.");
-      return;
-    }
-    
-    setStep(3);
   };
 
   const handleResetPassword = async (e) => {
@@ -71,7 +80,9 @@ function ForgotPassword() {
     setLoading(true);
 
     try {
-      const result = await resetPassword(otp, newPassword);
+      // Note: OTP parameter is no longer needed here
+      // The backend uses the passwordResetToken cookie set during OTP verification
+      const result = await resetPassword(newPassword);
       
       if (result.success) {
         setSuccess("Your password has been reset successfully! You can now log in with your new password.");
@@ -79,9 +90,11 @@ function ForgotPassword() {
       } else {
         setError(result.message);
         
-        // If OTP verification failed, go back to OTP step
-        if (result.message.includes("OTP") || result.message.includes("verification")) {
-          setStep(2);
+        // If token verification failed or expired, go back to email step
+        if (result.message.includes("token") || 
+            result.message.includes("authentication") || 
+            result.message.includes("expired")) {
+          setStep(1);
         }
       }
     } catch (err) {
@@ -94,7 +107,7 @@ function ForgotPassword() {
 
   const renderStepForm = () => {
     switch (step) {
-      case 1:
+      case 1: // Email submission step
         return (
           <form className="space-y-6" onSubmit={handleSubmitEmail}>
             <div>
@@ -138,69 +151,8 @@ function ForgotPassword() {
             </div>
           </form>
         );
-      case 2:
-        return (
-          <form className="space-y-6" onSubmit={handleVerifyOtp}>
-            <div>
-              <label htmlFor="otp" className="block text-sm font-medium text-gray-700">
-                Verification Code
-              </label>
-              <div className="mt-1">
-                <input
-                  id="otp"
-                  name="otp"
-                  type="text"
-                  required
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value.replace(/[^0-9]/g, ''))}
-                  maxLength={6}
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md text-center text-lg tracking-widest"
-                  placeholder="123456"
-                />
-              </div>
-              <p className="mt-2 text-sm text-gray-500">
-                Enter the 6-digit code sent to your email.
-              </p>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-              >
-                {loading ? (
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                ) : "Verify"}
-              </button>
-            </div>
-
-            <div className="text-sm text-center">
-              <button
-                type="button"
-                onClick={() => handleSubmitEmail({ preventDefault: () => {} })}
-                disabled={loading}
-                className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none disabled:opacity-50"
-              >
-                Didn't receive a code? Resend
-              </button>
-            </div>
-
-            <div className="text-sm text-center">
-              <button
-                type="button"
-                onClick={() => setStep(1)}
-                className="flex items-center font-medium text-gray-600 hover:text-gray-500 focus:outline-none mx-auto"
-              >
-                <ArrowLeftIcon className="h-4 w-4 mr-1" /> Back
-              </button>
-            </div>
-          </form>
-        );
-      case 3:
+        
+      case 2: // New password step (after OTP verification)
         return (
           <form className="space-y-6" onSubmit={handleResetPassword}>
             <div>
@@ -280,10 +232,10 @@ function ForgotPassword() {
             <div className="text-sm text-center">
               <button
                 type="button"
-                onClick={() => setStep(2)}
+                onClick={() => setStep(1)}
                 className="flex items-center font-medium text-gray-600 hover:text-gray-500 focus:outline-none mx-auto"
               >
-                <ArrowLeftIcon className="h-4 w-4 mr-1" /> Back
+                <ArrowLeftIcon className="h-4 w-4 mr-1" /> Start over
               </button>
             </div>
           </form>
@@ -298,13 +250,11 @@ function ForgotPassword() {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
           {step === 1 && "Reset your password"}
-          {step === 2 && "Verify your email"}
-          {step === 3 && "Create new password"}
+          {step === 2 && "Create new password"}
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           {step === 1 && "Enter your email to receive a verification code"}
-          {step === 2 && "Enter the verification code sent to your email"}
-          {step === 3 && "Choose a new secure password for your account"}
+          {step === 2 && "Choose a new secure password for your account"}
         </p>
       </div>
 
