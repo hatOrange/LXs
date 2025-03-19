@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import { ArrowLeftIcon, MailIcon, LockIcon, EyeIcon, EyeOffIcon } from "lucide-react";
+import "../styles/forgotPassword.css";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -109,14 +109,14 @@ function ForgotPassword() {
     switch (step) {
       case 1: // Email submission step
         return (
-          <form className="space-y-6" onSubmit={handleSubmitEmail}>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          <form className="form-container" onSubmit={handleSubmitEmail}>
+            <div className="form-group">
+              <label htmlFor="email" className="form-label">
                 Email address
               </label>
-              <div className="mt-1 relative rounded-md shadow-sm">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <MailIcon className="h-5 w-5 text-gray-400" />
+              <div className="input-container">
+                <div className="input-icon">
+                  <span className="icon">✉</span>
                 </div>
                 <input
                   id="email"
@@ -126,26 +126,26 @@ function ForgotPassword() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
+                  className="form-input"
                   placeholder="you@example.com"
                 />
               </div>
-              <p className="mt-2 text-sm text-gray-500">
+              <p className="form-hint">
                 We'll send a verification code to this email.
               </p>
             </div>
 
-            <div>
+            <div className="form-group">
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+                className="primary-button"
               >
                 {loading ? (
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
+                  <div className="button-loading">
+                    <div className="spinner"></div>
+                    <span>Sending...</span>
+                  </div>
                 ) : "Send verification code"}
               </button>
             </div>
@@ -154,14 +154,14 @@ function ForgotPassword() {
         
       case 2: // New password step (after OTP verification)
         return (
-          <form className="space-y-6" onSubmit={handleResetPassword}>
-            <div>
-              <label htmlFor="newPassword" className="block text-sm font-medium text-gray-700">
+          <form className="form-container" onSubmit={handleResetPassword}>
+            <div className="form-group">
+              <label htmlFor="newPassword" className="form-label">
                 New Password
               </label>
-              <div className="mt-1 relative rounded-md shadow-sm">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <LockIcon className="h-5 w-5 text-gray-400" />
+              <div className="input-container">
+                <div className="input-icon">
+                  <span className="icon">🔒</span>
                 </div>
                 <input
                   id="newPassword"
@@ -170,36 +170,36 @@ function ForgotPassword() {
                   required
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 pr-12 sm:text-sm border-gray-300 rounded-md"
+                  className="form-input"
                   placeholder="••••••••"
                   minLength={8}
                 />
-                <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
+                <div className="input-icon right">
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="text-gray-400 hover:text-gray-500 focus:outline-none"
+                    className="show-password-button"
                   >
                     {showPassword ? (
-                      <EyeOffIcon className="h-5 w-5" />
+                      <span className="icon">👁‍🗨</span>
                     ) : (
-                      <EyeIcon className="h-5 w-5" />
+                      <span className="icon">👁</span>
                     )}
                   </button>
                 </div>
               </div>
-              <p className="mt-1 text-xs text-gray-500">
+              <p className="form-hint">
                 At least 8 characters
               </p>
             </div>
 
-            <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+            <div className="form-group">
+              <label htmlFor="confirmPassword" className="form-label">
                 Confirm New Password
               </label>
-              <div className="mt-1 relative rounded-md shadow-sm">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <LockIcon className="h-5 w-5 text-gray-400" />
+              <div className="input-container">
+                <div className="input-icon">
+                  <span className="icon">🔒</span>
                 </div>
                 <input
                   id="confirmPassword"
@@ -208,34 +208,34 @@ function ForgotPassword() {
                   required
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
+                  className="form-input"
                   placeholder="••••••••"
                 />
               </div>
             </div>
 
-            <div>
+            <div className="form-group">
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+                className="primary-button"
               >
                 {loading ? (
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
+                  <div className="button-loading">
+                    <div className="spinner"></div>
+                    <span>Resetting...</span>
+                  </div>
                 ) : "Reset Password"}
               </button>
             </div>
 
-            <div className="text-sm text-center">
+            <div className="start-over">
               <button
                 type="button"
                 onClick={() => setStep(1)}
-                className="flex items-center font-medium text-gray-600 hover:text-gray-500 focus:outline-none mx-auto"
+                className="text-button"
               >
-                <ArrowLeftIcon className="h-4 w-4 mr-1" /> Start over
+                <span className="icon-left">⬅</span> Start over
               </button>
             </div>
           </form>
@@ -246,70 +246,49 @@ function ForgotPassword() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-100 to-indigo-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+    <div className="forgot-password-container">
+      <div className="form-card-container">
+        <h2 className="page-title">
           {step === 1 && "Reset your password"}
           {step === 2 && "Create new password"}
         </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
+        <p className="page-subtitle">
           {step === 1 && "Enter your email to receive a verification code"}
           {step === 2 && "Choose a new secure password for your account"}
         </p>
-      </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow-lg sm:rounded-xl sm:px-10 transition-all hover:shadow-xl">
+        <div className="form-card">
           {error && (
-            <div className="mb-4 rounded-md bg-red-50 p-4">
-              <div className="flex">
-                <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div className="ml-3">
-                  <p className="text-sm font-medium text-red-800">{error}</p>
-                </div>
+            <div className="alert error">
+              <div className="alert-content">
+                <span className="alert-icon">❌</span>
+                <p className="alert-message">{error}</p>
               </div>
             </div>
           )}
           
           {success && (
-            <div className="mb-4 rounded-md bg-green-50 p-4">
-              <div className="flex">
-                <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div className="ml-3">
-                  <p className="text-sm font-medium text-green-800">{success}</p>
-                </div>
+            <div className="alert success">
+              <div className="alert-content">
+                <span className="alert-icon">✅</span>
+                <p className="alert-message">{success}</p>
               </div>
             </div>
           )}
           
           {renderStepForm()}
 
-          <div className="mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">Remember your password?</span>
-              </div>
-            </div>
+          <div className="divider">
+            <span>Remember your password?</span>
+          </div>
 
-            <div className="mt-6">
-              <Link
-                to="/login"
-                className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Back to sign in
-              </Link>
-            </div>
+          <div className="login-link">
+            <Link
+              to="/login"
+              className="secondary-button"
+            >
+              Back to sign in
+            </Link>
           </div>
         </div>
       </div>
